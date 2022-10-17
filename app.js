@@ -21,6 +21,7 @@ var editar_maestroRouter = require('./routes/editar_maestro');
 var materiasRouter = require('./routes/materias');
 var ver_alumnosRouter = require('./routes/ver_alumnos');
 var ver_maestrosRouter = require('./routes/ver_maestros');
+var ver_calificacionesRouter = require('./routes/ver_calificaciones');
 
 var app = express();
 
@@ -54,6 +55,7 @@ app.use('/editar_maestro', editar_maestroRouter);
 app.use('/materias', materiasRouter);
 app.use('/ver_alumnos', ver_alumnosRouter);
 app.use('/ver_maestros', ver_maestrosRouter);
+app.use('/ver_calificaciones', ver_calificacionesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
