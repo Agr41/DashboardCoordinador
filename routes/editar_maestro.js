@@ -37,7 +37,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(req.user.username)
           .then((dato)=>{
             console.log(dato.promedio)
-            res.render('index', { title: "Menú Principal"});
+            res.render('editar_maestro', { title: "Editar maestro"});
           })  
           .catch((err)=>{
               console.log(err);
