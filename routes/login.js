@@ -15,7 +15,7 @@ passport.use(new LocalStrategy(
     await client.connect();
     const db = client.db(dbName);
     const collection = db.collection('usuarios');
-    await collection.findOne({ student_id: parseInt(username) }, function (err, user) {
+    await collection.findOne({ username: username }, function (err, user) {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
     
@@ -32,7 +32,7 @@ passport.use(new LocalStrategy(
 
 passport.serializeUser(function(user, done) {
   console.log(user);
-  done(null, user.student_id);
+  done(null, user.username);
 });
 
 /* GET home page. */
