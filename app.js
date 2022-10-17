@@ -11,6 +11,15 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var cerrar_sesionRouter = require('./routes/cerrar_sesion');
+var cambiar_passwordRouter = require('./routes/cambiar_password');
+var crear_alumnosRouter = require('./routes/crear_alumnos');
+var crear_maestrosRouter = require('./routes/crear_maestros');
+var crear_materiaRouter = require('./routes/crear_materia');
+var editar_calificacionesRouter = require('./routes/subir_calificaciones');
+var editar_maestroRouter = require('./routes/editar_maestro');
+var materiasRouter = require('./routes/materias');
+var ver_alumnosRouter = require('./routes/ver_alumnos');
+var ver_maestrosRouter = require('./routes/ver_maestros');
 
 var app = express();
 
@@ -34,6 +43,15 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/cerrar_sesion', cerrar_sesionRouter);
+app.use('/cambiar_password', cambiar_passwordRouter);
+app.use('/crear_alumnos', crear_alumnosRouter);
+app.use('/crear_maestros', crear_maestrosRouter);
+app.use('/crear_materia', crear_materiaRouter);
+app.use('/editar_calificaciones', editar_calificacionesRouter);
+app.use('/editar_maestro', editar_maestroRouter);
+app.use('/materias', materiasRouter);
+app.use('/ver_alumnos', ver_alumnosRouter);
+app.use('/ver_maestros', ver_maestrosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
