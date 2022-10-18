@@ -4,7 +4,24 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-          
+              {{#each materias}}
+          <div class="col-sm-6 col-lg-3">
+              <div class="card" style="width: 16rem;">
+                <img src="/img/IIS-Portal.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{this.nombre}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="/materias?materia=IIS" class="btn btn-success">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          <ul class="people_list">
+            {{#each materias}}
+              <li>{{this.nombre}}</li>
+              <li>{{this.docente}}</li>
+            {{/each}}
+          </ul>
         </div>
       </div>
      {{> footer}}
