@@ -16,10 +16,10 @@ async function detalleUsu(id){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('materias');
-      //let arregloMat = await collection.aggregate([{$match:{student_id:id}}]).toArray();
+      let arregloMat = await collection.aggregate([{$match:{carrera:id}}]).toArray();
       
       
-      var dato = {}
+      var dato = {arregloMat}
       console.log(dato)
       return dato;
   };
@@ -34,10 +34,10 @@ router.get('/',(req, res, next) => {
 }, function(req, res, next) {
 
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
-          detalleUsu(req.user.username)
+          detalleUsu(req.query.materia)
           .then((dato)=>{
-            console.log(dato.promedio)
-            res.render('materias', { title: "Materias"});
+            console.log(dato.arregloMat)
+            res.render('materias', { title: "Materias", materias: dato.arregloMat});
           })  
           .catch((err)=>{
               console.log(err);
