@@ -4,7 +4,50 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-          
+          <div>
+            <ul>
+              {{#each datos}}
+              <li>Materia: {{this.nombre}}</li>
+              <li>Profesor: {{this.docente}}</li>
+              <li>Periodo: </li>
+              <li>Horario: </li>
+              <li>Ciclo: {{this.ciclo}}</li>
+              <li>Carrera: {{this.carrera}}</li>
+              {{/each}}
+            </ul>
+            
+          </div>
+          <table class="table table-striped">
+              <thead>
+    <tr>
+      <th scope="col">Matrícula</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Retardos</th>
+      <th scope="col">Inasistencias</th>
+      <th scope="col">CALIFICACIÓN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+
+          </table>
         </div>
       </div>
      {{> footer}}
