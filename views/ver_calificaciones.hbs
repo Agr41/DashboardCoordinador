@@ -4,18 +4,25 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-          <div>
-            <ul>
-              {{#each datos}}
-              <li>Materia: {{this.nombre}}</li>
-              <li>Profesor: {{this.docente}}</li>
-              <li>Periodo: </li>
-              <li>Horario: </li>
-              <li>Ciclo: {{this.ciclo}}</li>
-              <li>Carrera: {{this.carrera}}</li>
-              {{/each}}
-            </ul>
-            
+          <div class="row">
+            <div class="col-sm-6 col-lg-6">
+              <ul>
+                {{#each datos}}
+                <li>Materia: {{this.nombre}}</li>
+                <li>Profesor: {{this.docente}}</li>
+                <li>Periodo: {{this.fecha_inicio}} - {{this.fecha_fin}}</li>
+                {{/each}}
+              </ul>
+            </div>
+            <div class="col-sm-6 col-lg-6">
+              <ul>
+                {{#each datos}}
+                <li>Horario: {{hora_inicio}} - {{hora_fin}}</li>
+                <li>Ciclo: {{this.ciclo}}</li>
+                <li>Carrera: {{this.carrera}}</li>
+                {{/each}}
+              </ul>
+            </div>
           </div>
           <table class="table table-striped">
               <thead>
@@ -28,23 +35,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    {{#each datos}}
+      {{#with this}}
+        {{#each alumnos}}
+          <tr>
+            <th scope="row">{{matricula}}</th>
+            <td>{{nombre}}</td>
+            <td>{{retardos}}</td>
+            <td>{{inasistencias}}</td>
+            <td>{{calificacion}}/100</td>
+          </tr>
+        {{/each}}
+    {{/with}}
+    {{/each}}
+    
   </tbody>
 
           </table>
