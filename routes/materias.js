@@ -16,7 +16,7 @@ async function detalleUsu(id){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('materias');
-      let arregloMat = await collection.aggregate([{$match:{carrera:id}}]).toArray();
+      let arregloMat = await collection.aggregate([{$match:{$or:[{carrera:id},{docente:id}]}}]).toArray();
       
       
       var dato = {arregloMat}
@@ -34,7 +34,16 @@ router.get('/',(req, res, next) => {
 }, function(req, res, next) {
 
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
-          detalleUsu(req.query.materia)
+          let query=""
+          if (req.query.materia==undefined){
+            query=req.query.docente
+          }
+          else{
+            query=req.query.materia
+          }
+          console.log(query)
+
+          detalleUsu(query)
           .then((dato)=>{
             console.log(dato.arregloMat)
             res.render('materias', { title: "Materias", materias: dato.arregloMat});
