@@ -15,11 +15,15 @@ passport.deserializeUser(
 async function detalleUsu(id){
   await client.connect();
       const db = client.db(dbName);
-      const collection = db.collection('materias');
-      //let arregloMat = await collection.aggregate([{$match:{student_id:id}}]).toArray();
+      const collection = db.collection('usuarios');
+      let arregloMat = await collection.aggregate([{$match:{$and:[{"active":true},{"root":{$ne:true}}]}}]).toArray();
+      let aluISC = await db.collection('alumnos').aggregate([{$match:{$and:[{"active":true},{"carrera":"ISC"}]}}]).toArray();
+      let aluIM = await db.collection('alumnos').aggregate([{$match:{$and:[{"active":true},{"carrera":"IM"}]}}]).toArray();
+      let aluISA = await db.collection('alumnos').aggregate([{$match:{$and:[{"active":true},{"carrera":"ISA"}]}}]).toArray();
+      let aluIIS = await db.collection('alumnos').aggregate([{$match:{$and:[{"active":true},{"carrera":"IIS"}]}}]).toArray();
       
       
-      var dato = {}
+      var dato = {arregloMat,aluISC,aluIM,aluISA,aluIIS}
       console.log(dato)
       return dato;
   };
@@ -36,8 +40,7 @@ router.get('/',(req, res, next) => {
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
           detalleUsu(req.user.username)
           .then((dato)=>{
-            console.log(dato.promedio)
-            res.render('crear_materia', { title: "Crear materia"});
+            res.render('crear_materia', { title: "Crear materia", maestro: dato.arregloMat, aluISC:dato.aluISC, aluIM:dato.aluIM, aluISA:dato.aluISA, aluIIS:dato.aluIIS});
           })  
           .catch((err)=>{
               console.log(err);
