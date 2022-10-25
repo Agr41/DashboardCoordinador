@@ -4,8 +4,57 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-          
+          <div class="row">
+            <div class="col-sm-6 col-lg-6">
+              <ul>
+                {{#each datos}}
+                <li>Materia: {{this.nombre}}</li>
+                <li>Profesor: {{this.docente}}</li>
+                <li>Periodo: {{this.fecha_inicio}} - {{this.fecha_fin}}</li>
+                {{/each}}
+              </ul>
+            </div>
+            <div class="col-sm-6 col-lg-6">
+              <ul>
+                {{#each datos}}
+                <li>Horario: {{hora_inicio}} - {{hora_fin}}</li>
+                <li>Ciclo: {{this.ciclo}}</li>
+                <li>Carrera: {{this.carrera}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+          <table class="table table-striped">
+              <thead>
+    <tr>
+      <th scope="col">Matrícula</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Retardos</th>
+      <th scope="col">Inasistencias</th>
+      <th scope="col">CALIFICACIÓN</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each datos}}
+      {{#with this}}
+        {{#each alumnos}}
+          <tr>
+            <th scope="row">{{matricula}}</th>
+            <td>{{nombre}}</td>
+            <td><input type="number" class="form-control" name="retardos" placeholder=""></td>
+            <td><input type="number" class="form-control" name="inacistencias" placeholder=""></td>
+            <td><input type="number" class="form-control" name="calificacion" placeholder="10/100"></td>
+          </tr>
+        {{/each}}
+    {{/with}}
+    {{/each}}
+    
+  </tbody>
+
+          </table>
         </div>
+        <button class="btn btn-primary" type="submit">Guardar cambios</button>
       </div>
+
      {{> footer}}
     </div>
