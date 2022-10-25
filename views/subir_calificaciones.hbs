@@ -5,18 +5,15 @@
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           <form>
-            <label>Nombre de la materia</label>
-            <input class="form-control form-control-lg" type="text" name="nombre" value="{{nombre}}" disabled aria-label=".form-control-lg example">
-            <input class="form-control form-control-lg" type="text" name="periodo" value="{{periodo}}" disabled aria-label=".form-control-lg example">
-            <input class="form-control form-control-lg" type="text" name="tipo" value="{{tipo}}" disabled aria-label=".form-control-lg example">
+        
             <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           <div class="row">
             <div class="col-sm-6 col-lg-6">
               <ul>
                 {{#each datos}}
-                <li>Materia: {{this.nombre}}</li>
-                <li>Profesor: {{this.docente}}</li>
+                <li>Materia: {{this.nombre}} <input class="form-control form-control-sm" value="{{this.nombre}}" hidden name="nombre"></li>
+                <li>Profesor:  {{this.docente}}</li>
                 <li>Periodo: {{this.fecha_inicio}} - {{this.fecha_fin}}</li>
                 {{/each}}
               </ul>
@@ -25,8 +22,8 @@
               <ul>
                 {{#each datos}}
                 <li>Horario: {{hora_inicio}} - {{hora_fin}}</li>
-                <li>Ciclo: {{this.ciclo}}</li>
-                <li>Carrera: {{this.carrera}}</li>
+                <li>Ciclo: {{this.ciclo}} <input class="form-control form-control-sm" value="{{this.ciclo}}" hidden name="ciclo"></li>
+                <li>Carrera: {{this.carrera}} <input class="form-control form-control-sm" value="{{this.tipo}}" hidden name="tipo"></li>
                 {{/each}}
               </ul>
             </div>
