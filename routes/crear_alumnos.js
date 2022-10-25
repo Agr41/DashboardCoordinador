@@ -1,52 +1,102 @@
 var express = require('express');
 var router = express.Router();
+var {client,dbName} = require('../db/mongo');
+var passport = require('passport');
+var LocalStrategy = require('passport-local');
+//var schema = require('../public/javascript/validation');
+const Joi = require('joi');
+
+const schema = Joi.object({
+    matricula: Joi.number()
+    .min(10000)
+    .max(99999)
+    .required(),
+
+    carrera: Joi.string()
+    .min(2)
+    .max(3)
+    .required(),
+    nombre: Joi.string()
+    .min(2)
+    .required(),
+    active: Joi.boolean()
+    .required()
+    
+});
+
+
+
+
+
 var passport = require('passport');
 var {client,dbName} = require('../db/mongo');
 
 passport.deserializeUser(
-  async function(id, done) {
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection('usuarios');
-    collection.findOne({username:id}, function (err, user) {
-      done(err, user);});
-});
-
-async function detalleUsu(id){
-  await client.connect();
+    async function(id, done) {
+      await client.connect();
       const db = client.db(dbName);
-      const collection = db.collection('materias');
-      //let arregloMat = await collection.aggregate([{$match:{student_id:id}}]).toArray();
-      
-      
-      var dato = {}
-      console.log(dato)
-      return dato;
-  };
-
-/* GET home page. */
-router.get('/',(req, res, next) => {
-  if (req.isAuthenticated()) {
-      return next();
-  } else {
-      res.redirect('/login')
-  }
-}, function(req, res, next) {
-
-          //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
-          detalleUsu(req.user.username)
-          .then((dato)=>{
-            console.log(dato.promedio)
-            res.render('crear_alumnos', { title: "Crear alumnos"});
-          })  
-          .catch((err)=>{
-              console.log(err);
-          })
-          .finally(()=>{
-              client.close
-          })
-
-  
+      const collection = db.collection('usuarios');
+      collection.findOne({username:id}, function (err, user) {
+        done(err, user);
+  });
 });
 
-module.exports = router;
+
+
+  router.get('/',(req, res, next) => {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect('/')
+    }
+  }, function(req, res, next) {
+    res.render('crear_alumnos', {title: "Crear alumnos"});
+  });
+ 
+
+  router.post('/registro', async function(req, res, next){
+    try{
+    var value = await schema.validateAsync(req.body);
+    console.log(value);
+    //if (value = {}){
+    //}else{
+    regUser(value)
+      .then(()=>{
+        //AÑADIR MENSAJE DE ÉXITO DESPUÉS
+        res.send(`<script>alert("Registro exitoso")
+        window.location.href='/ver_alumnos';
+        </script>`);
+        console.log("Registro correcto");
+      })
+      .catch((err)=>{
+        
+        console.log(err);
+        
+      })
+      .finally(()=>{
+        client.close()
+      })
+    }
+    catch (err) { 
+      res.send(`<script>alert("Por favor complete todos los campos")
+        window.location.href='/crear_alumnos';
+        </script>`), console.log(err); }    
+    //}
+  });
+
+  async function regUser(datos){
+    await client.connect();
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    const collection = db.collection('alumnos');
+    await collection.insertOne(
+        {
+          matricula: datos.matricula,
+          carrera: datos.carrera,
+          nombre:datos.nombre,
+          active:datos.active
+        }
+      );
+      console.log(datos.usuario); 
+  }
+    module.exports = router;

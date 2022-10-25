@@ -90,7 +90,7 @@ router.post('/registro', async function(req, res, next){
     .then(()=>{
       //AÑADIR MENSAJE DE ÉXITO DESPUÉS
       res.send(`<script>alert("Registro exitoso")
-      window.location.href='/ver_maestros';
+      window.location.href='/';
       </script>`);
       console.log("Registro correcto");
     })
@@ -105,7 +105,7 @@ router.post('/registro', async function(req, res, next){
   }
   catch (err) { 
     res.send(`<script>alert("Por favor complete todos los campos")
-      window.location.href='/crear_maestros';
+      window.location.href='/crear_materia';
       </script>`), console.log(err); }    
   //}
 });
