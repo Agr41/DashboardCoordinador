@@ -4,11 +4,11 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-           <form class="row g-3 needs-validation" action="" method="post" novalidate>
+           <form class="row g-3 needs-validation" action="/crear_materia/registro" method="post" novalidate>
           <h5>Carrera y semestre</h5>
           <div class="col-md-8">
           <label>Carrera</label>
-          <select class="form-select" id="type" aria-label="Default select example">
+          <select class="form-select" id="type" aria-label="Default select example" name="carrera">
             <option selected value="">---Seleccione una carrera---</option>
             <option value="ISC">Ingeniería en Sistemas Computacionales</option>
             <option value="IM">Ingeniería Mecatrónica</option>
@@ -18,7 +18,7 @@
           </div>
           <div class="col-md-4">
           <label>Semestre</label>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" name="semestre">
             <option selected>---Seleccione un semestre---</option>
             <option value=1>Primero</option>
             <option value=2>Segundo</option>
@@ -38,16 +38,16 @@
           </div>
           <div class="col-md-6">
           <label>Docente</label>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" name="docente">
             <option selected>---Seleccione un docente---</option>
             {{#each maestro}}
-              <option >{{this.nombre}}</option>
+              <option value="{{this.nombre}}" >{{this.nombre}}</option>
             {{/each}}
           </select>
           </div>
           <div class="col-md-6">
           <label>Tipo</label>
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" name="tipo">
             <option selected>---Seleccione un tipo---</option>
             <option value="Ordinario">Ordinario</option>
             <option value="Extraordinario">Extraordinario</option>
@@ -57,34 +57,35 @@
           </div>
           <div class="col-md-6">
             <label>Ciclo</label>
-            <input class="form-control" type="text" placeholder="2022S2">
+            <input class="form-control" type="text" placeholder="2022S2" name="ciclo">
           </div>
           <hr>
           <h5>Duración</h5>
           <div class="col-md-3">
             <label>Fecha de inicio</label>
-            <input class="form-control" type="date">
+            <input class="form-control" type="date" name="f_inicio">
           </div>
           <div class="col-md-3">
             <label>Fecha de fin</label>
-            <input class="form-control" type="date">
+            <input class="form-control" type="date" name="f_final">
           </div>
           <div class="col-md-3">
             <label>Hora de inicio</label>
-            <input class="form-control" type="time">
+            <input class="form-control" type="time" name="h_inicio">
           </div>
           <div class="col-md-3">
             <label>Hora de fin</label>
-            <input class="form-control" type="time">
+            <input class="form-control" type="time" name="h_final">
           </div>
           <hr>
           <div class="col-md-8" id="alumnos">
             <label>Alumnos</label>
-          <select class="form-select" id="size" aria-label="Default select example">
+          <select class="form-select" id="size" aria-label="Default select example" name="nomAlu">
             <option value="">---</option>
           </select>
           <button type="button" class="btn btn-light" id="btn-agregar" onclick="cloneSelect()">Add another Select</button>
           </div>
+          <input type="submit">
           </form>
         </div>
       </div>
@@ -113,9 +114,9 @@ $(document).ready(function () {
 <script>
   var selectionCounter = 0
 function cloneSelect() {
-  var select = document.getElementById("type")
+  var select = document.getElementById("size")
   var clone = select.cloneNode(true)
-  var name = select.getAttribute("name") + selectionCounter++
+  var name = select.getAttribute("name") //+ selectionCounter++
   clone.id = name
   clone.setAttribute("name", name)
   document.getElementById("alumnos").appendChild(clone)

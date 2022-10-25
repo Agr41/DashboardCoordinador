@@ -3,6 +3,34 @@ var router = express.Router();
 var passport = require('passport');
 var {client,dbName} = require('../db/mongo');
 
+const Joi = require('joi');
+
+const schema = Joi.object({
+  carrera: Joi.string()
+    .required(),
+    semestre: Joi.string()
+    .required(),
+    nombre: Joi.string()
+    .min(2)
+    .required(),
+    docente: Joi.string()
+    .required(),
+    tipo: Joi.string()
+    .required(),
+    ciclo: Joi.string()
+    .required(),
+    f_inicio: Joi.string()
+    .required(),
+    f_final: Joi.string()
+    .required(),
+    h_inicio: Joi.string()
+    .required(),
+    h_final: Joi.string()
+    .required(),
+    nomAlu: Joi.array()
+    .required(),
+});
+
 passport.deserializeUser(
   async function(id, done) {
     await client.connect();
@@ -51,5 +79,83 @@ router.get('/',(req, res, next) => {
 
   
 });
+
+router.post('/registro', async function(req, res, next){
+  try{
+  var value = await schema.validateAsync(req.body);
+  console.log(value);
+  //if (value = {}){
+  //}else{
+  regMat(value)
+    .then(()=>{
+      //AÑADIR MENSAJE DE ÉXITO DESPUÉS
+      res.send(`<script>alert("Registro exitoso")
+      window.location.href='/ver_maestros';
+      </script>`);
+      console.log("Registro correcto");
+    })
+    .catch((err)=>{
+      
+      console.log(err);
+      
+    })
+    .finally(()=>{
+      client.close()
+    })
+  }
+  catch (err) { 
+    res.send(`<script>alert("Por favor complete todos los campos")
+      window.location.href='/crear_maestros';
+      </script>`), console.log(err); }    
+  //}
+});
+
+async function regMat(datos){
+  await client.connect();
+  console.log('Connected successfully to server');
+  const db = client.db(dbName);
+  const collection = db.collection('materias');
+
+
+  /*var arrayAlu = datos.nomAlu.split(",");
+  var valuesArr = [];
+
+  var cuotasOrig= []
+
+  console.log("arrray cuotras"+ arrayAlu);
+if (arrayAlu.length!=0 && arrayAlu!=""&&arrayAlu!=[]){
+for (var i = arrayAlu.length -1; i >= 0; i--){
+   cuotasOrig.splice(arrayAlu[i],1);
+}
+}
+   valuesArr=cuotasOrig;*/
+let valuesArr=[]
+   for (var i = 0; i <= datos.nomAlu.length-1; i++){
+
+    valuesArr[i]={
+      "nombre":datos.nomAlu[i],
+      "calificacion":"-",
+      "inasistencias":"-",
+      "retardos":"-",
+    }
+ }
+  await collection.insertOne(
+      {
+        carrera: datos.carrera,
+        semestre:datos.semestre,
+        nombre: datos.nombre,
+        docente:datos.docente,
+        tipo:datos.tipo,
+        ciclo:datos.ciclo,
+        fecha_inicio:datos.f_inicio,
+        fecha_fin:datos.f_final,
+        hora_inicio:datos.h_inicio,
+        hora_fin:datos.h_final,
+        alumnos:valuesArr
+
+      }
+    );
+    console.log(datos.usuario); 
+}
 
 module.exports = router;
