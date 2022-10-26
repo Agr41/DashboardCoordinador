@@ -4,12 +4,16 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
+          <form action="/editar_calificaciones/subir" method="post">
+        
+            <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
           <div class="row">
             <div class="col-sm-6 col-lg-6">
               <ul>
                 {{#each datos}}
-                <li>Materia: {{this.nombre}}</li>
-                <li>Profesor: {{this.docente}}</li>
+                <li>Materia: {{this.nombre}} <input class="form-control form-control-sm" value="{{this.nombre}}" hidden name="materia"></li>
+                <li>Profesor:  {{this.docente}}</li>
                 <li>Periodo: {{this.fecha_inicio}} - {{this.fecha_fin}}</li>
                 {{/each}}
               </ul>
@@ -18,8 +22,8 @@
               <ul>
                 {{#each datos}}
                 <li>Horario: {{hora_inicio}} - {{hora_fin}}</li>
-                <li>Ciclo: {{this.ciclo}}</li>
-                <li>Carrera: {{this.carrera}}</li>
+                <li>Ciclo: {{this.ciclo}} <input class="form-control form-control-sm" value="{{this.ciclo}}" hidden name="ciclo"></li>
+                <li>Carrera: {{this.carrera}} <input class="form-control form-control-sm" value="{{this.tipo}}" hidden name="tipo"></li>
                 {{/each}}
               </ul>
             </div>
@@ -40,10 +44,10 @@
         {{#each alumnos}}
           <tr>
             <th scope="row">{{matricula}}</th>
-            <td>{{nombre}}</td>
-            <td><input type="number" class="form-control" name="retardos" placeholder=""></td>
-            <td><input type="number" class="form-control" name="inacistencias" placeholder=""></td>
-            <td><input type="number" class="form-control" name="calificacion" placeholder="10/100"></td>
+            <td><input type="text" class="form-control" name="nombre" placeholder="0" hidden value="{{nombre}}" required>{{nombre}}</td>
+            <td><input type="number" class="form-control" name="retardos" placeholder="0"value={{retardos}} required></td>
+            <td><input type="number" class="form-control" name="inasistencias" placeholder="0" value={{inasistencias}} required></td>
+            <td><input type="number" class="form-control" name="calificacion" placeholder="10/100" value={{calificacion}} required></td>
           </tr>
         {{/each}}
     {{/with}}
@@ -55,6 +59,8 @@
         </div>
         <button class="btn btn-primary" type="submit">Guardar cambios</button>
       </div>
-
+          </form>
+        </div>
+      </div>
      {{> footer}}
     </div>

@@ -87,6 +87,7 @@ router.post('/subir', async function(req, res, next){
       res.send(`<script>alert("Registro exitoso")
       window.location.href='/';
       </script>`);
+      res.redirect('/ver_materia?nombre='+req.body.materia+'&ciclo='+req.body.ciclo+'&tipo='+req.body.tipo);
       console.log("Registro correcto");
     })
     .catch((err)=>{
@@ -122,6 +123,7 @@ async function regUser(datos){
   const collection = db.collection('materias');
   await collection.updateOne({nombre:datos.materia, tipo:datos.tipo, ciclo:datos.ciclo},{$set:{
     alumnos:valuesArr,
+    sent:true
   }}
     );
     console.log(datos.usuario); 
