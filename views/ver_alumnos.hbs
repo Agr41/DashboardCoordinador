@@ -4,7 +4,30 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-          
+          <div class="row">
+          </div>
+          <table class="table table-striped">
+              <thead>
+    <tr>
+      <th scope="col">Matrícula</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Carrera</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each datos}}
+      {{#with this}}
+          <tr>
+            <th scope="row">{{matricula}}</th>
+            <td>{{nombre}}</td>
+            <td>{{carrera}}</td>
+          </tr>
+    {{/with}}
+    {{/each}}
+    
+  </tbody>
+
+          </table>
         </div>
       </div>
      {{> footer}}

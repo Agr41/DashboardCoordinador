@@ -12,14 +12,14 @@ passport.deserializeUser(
       done(err, user);});
 });
 
-async function detalleUsu(id){
+async function detalleUsu(){
   await client.connect();
       const db = client.db(dbName);
-      const collection = db.collection('materias');
-      //let arregloMat = await collection.aggregate([{$match:{student_id:id}}]).toArray();
+      const collection = db.collection('alumnos');
+      let arregloAlu = await collection.aggregate([]).toArray();
       
       
-      var dato = {}
+      var dato = {arregloAlu}
       console.log(dato)
       return dato;
   };
@@ -34,10 +34,9 @@ router.get('/',(req, res, next) => {
 }, function(req, res, next) {
 
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
-          detalleUsu(req.user.username)
+          detalleUsu()
           .then((dato)=>{
-            console.log(dato.promedio)
-            res.render('ver_alumnos', { title: "Ver alumnos"});
+            res.render('ver_alumnos', { title: "Ver alumnos", datos:dato.arregloAlu});
           })  
           .catch((err)=>{
               console.log(err);
