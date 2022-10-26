@@ -81,13 +81,14 @@
           <h5>Alumnos</h5>
           <div class="col-md-8" id="alumnos">
             <label>Nombre</label>
-          <select class="form-select" id="size" aria-label="Default select example" name="nomAlu" disabled>
-            <option value="">---</option>
-          </select>
+            <select class="form-select" id="size" aria-label="Default select example" name="nomAlu" disabled>
+              <option value="">---</option>
+            </select>
           </div>
           <div class="col-md-4">
             <br>
             <button type="button" class="btn btn-dark" id="btn-agregar" onclick="cloneSelect()" disabled>Agregar más alumnos</button>
+            <button type="button" class="btn btn-danger" id="btn-borrar" disabled>Quitar alumno</button>
           </div>
           <div class="col-12">
             <button class="btn btn-success" type="submit">Crear materia</button>
@@ -99,7 +100,6 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
-  
 $(document).ready(function () {
     $("#type").change(function () {
         var val = $(this).val();
@@ -117,6 +117,15 @@ $(document).ready(function () {
       $("select").prop('disabled', false);
       $("button").prop('disabled', false);
     });
+    $("#size").change(function () {
+      $("#type").prop('disabled', true);
+    });
+});
+</script>
+<script>
+$("#btn-borrar").click(function() {  
+  $("#"+(selectionCounter-1)).remove();
+  selectionCounter--
 });
 </script>
 <script>
@@ -125,9 +134,11 @@ function cloneSelect() {
   var select = document.getElementById("size")
   var clone = select.cloneNode(true)
   var name = select.getAttribute("name") //+ selectionCounter++
-  clone.id = name
+  clone.id = selectionCounter++
   clone.setAttribute("name", name)
   document.getElementById("alumnos").appendChild(clone)
-}
-  
+}  
 </script>
+
+
+

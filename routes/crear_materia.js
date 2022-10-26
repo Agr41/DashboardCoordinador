@@ -87,12 +87,11 @@ router.post('/registro', async function(req, res, next){
   //if (value = {}){
   //}else{
   regMat(value)
-    .then(()=>{
+    .then((mensaje)=>{
       //AÑADIR MENSAJE DE ÉXITO DESPUÉS
-      res.send(`<script>alert("Registro exitoso")
-      window.location.href='/';
-      </script>`);
-      console.log("Registro correcto");
+      res.send("<script>alert('"+mensaje+"'); window.location.href='/';</script>");
+      res.redirect('/crear_materia');
+      console.log(mensaje);
     })
     .catch((err)=>{
       
@@ -106,7 +105,8 @@ router.post('/registro', async function(req, res, next){
   catch (err) { 
     res.send(`<script>alert("Por favor complete todos los campos")
       window.location.href='/crear_materia';
-      </script>`), console.log(err); }    
+      </script>`), console.log(err);
+      res.redirect('/ver_materia?nombre='+req.body.nombre+'&ciclo='+req.body.ciclo+'&tipo='+req.body.tipo);}    
   //}
 });
 
@@ -139,23 +139,34 @@ let valuesArr=[]
       "retardos":"-",
     }
  }
+ let mensaje
+ if(datos.tipo=="Ordinario" & valuesArr.length<5){
+ mensaje="Debe añadir por lo menos 5 alumnos para materias ordinarias"
+ await collection.findOne({})
+ }
+ else{
+  mensaje = "Registro correcto"
   await collection.insertOne(
-      {
-        carrera: datos.carrera,
-        semestre:datos.semestre,
-        nombre: datos.nombre,
-        docente:datos.docente,
-        tipo:datos.tipo,
-        ciclo:datos.ciclo,
-        fecha_inicio:datos.f_inicio,
-        fecha_fin:datos.f_final,
-        hora_inicio:datos.h_inicio,
-        hora_fin:datos.h_final,
-        alumnos:valuesArr
+    {
+      carrera: datos.carrera,
+      semestre:datos.semestre,
+      nombre: datos.nombre,
+      docente:datos.docente,
+      tipo:datos.tipo,
+      ciclo:datos.ciclo,
+      fecha_inicio:datos.f_inicio,
+      fecha_fin:datos.f_final,
+      hora_inicio:datos.h_inicio,
+      hora_fin:datos.h_final,
+      alumnos:valuesArr
 
-      }
+    }
     );
+ }
+  
+    
     console.log(datos.usuario); 
+    return mensaje;
 }
 
 module.exports = router;

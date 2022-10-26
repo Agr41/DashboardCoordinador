@@ -4,61 +4,61 @@
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           <form class="row g-3 needs-validation" action="/crear_alumnos/registro" method="post" novalidate>
-  <div class="col-md-6">
-    <label for="validationCustom01" class="form-label">Nombre completo</label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" name="nombre" required>
-    <div class="valid-feedback">
-      Correcto
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="validationCustomUsername" class="form-label">Matrícula</label>
-    <div class="input-group has-validation">
-      <input type="number" class="form-control" name="matricula" placeholder="00000" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-      <div class="invalid-feedback">
-        Por favor ingrese un correo.
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="validationCustom03" class="form-label">Carrera</label>
-    <select class="form-select" id="type" aria-label="Default select example" name="carrera">
-            <option selected value="">---Seleccione una carrera---</option>
-            <option value="ISC">Ingeniería en Sistemas Computacionales</option>
-            <option value="IM">Ingeniería Mecatrónica</option>
-            <option value="ISA">Ingeniería en Sistemas Automotrices</option>
-            <option value="IIS">Ingeniería en Industrial y de Sistemas</option>
-          </select>
-  </div>
-  {{!-- <div class="col-md-3">
-    <label for="validationCustom04" class="form-label">State</label>
-    <select class="form-select" id="validationCustom04" required>
-      <option selected disabled value="">Choose...</option>
-      <option>...</option>
-    </select>
-    <div class="invalid-feedback">
-      Please select a valid state.
-    </div>
-  </div>
-  <div class="col-md-3">
-    <label for="validationCustom05" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="validationCustom05" required>
-    <div class="invalid-feedback">
-      Please provide a valid zip.
-    </div>
-  </div> --}}
+          <div class="col-md-6">
+            <label for="validationCustom01" class="form-label">Nombre completo</label>
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" name="nombre" required>
+            <div class="valid-feedback">
+              Correcto
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustomUsername" class="form-label">Matrícula</label>
+            <div class="input-group has-validation">
+              <input type="number" class="form-control" name="matricula" placeholder="00000" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Por favor ingrese un correo.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Carrera</label>
+            <select class="form-select" id="type" aria-label="Default select example" name="carrera">
+                    <option selected value="">---Seleccione una carrera---</option>
+                    <option value="ISC">Ingeniería en Sistemas Computacionales</option>
+                    <option value="IM">Ingeniería Mecatrónica</option>
+                    <option value="ISA">Ingeniería en Sistemas Automotrices</option>
+                    <option value="IIS">Ingeniería en Industrial y de Sistemas</option>
+                  </select>
+          </div>
+            {{!-- <div class="col-md-3">
+              <label for="validationCustom04" class="form-label">State</label>
+              <select class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid state.
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustom05" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="validationCustom05" required>
+              <div class="invalid-feedback">
+                Please provide a valid zip.
+              </div>
+            </div> --}}
 
-  
-
-  </div>
-
-<div class="col-12">
+  <div class="col-12">
   <input type="hidden" name="active" value=true>
   </div>
   <div class="col-12">
     <button class="btn btn-primary" type="submit">Agregar alumno</button>
   </div>
 </form>
+
+  </div>
+
+
         </div>
       </div>
      {{> footer}}
