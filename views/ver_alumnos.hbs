@@ -12,6 +12,7 @@
       <th scope="col">Matrícula</th>
       <th scope="col">Nombre</th>
       <th scope="col">Carrera</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,12 @@
             <th scope="row">{{matricula}}</th>
             <td>{{nombre}}</td>
             <td>{{carrera}}</td>
+            <td>
+              <form method="post" action="/ver_alumnos/deshabilitar">
+              <input name="alumno" value="{{nombre}}" hidden>
+                <button class="btn btn-danger">Borrar</button>
+              </form>
+            </td>
           </tr>
     {{/with}}
     {{/each}}

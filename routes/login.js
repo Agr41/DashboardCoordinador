@@ -15,7 +15,7 @@ passport.use(new LocalStrategy(
     await client.connect();
     const db = client.db(dbName);
     const collection = db.collection('usuarios');
-    await collection.findOne({ username: username }, function (err, user) {
+    await collection.findOne({ username: username, active:true }, function (err, user) {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
     

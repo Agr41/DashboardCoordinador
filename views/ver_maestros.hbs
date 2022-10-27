@@ -10,6 +10,7 @@
       <th scope="col">Correo</th>
       <th scope="col">Nombre</th>
       <th scope="col">Materias</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,12 @@
             <th scope="row">{{username}}</th>
             <td>{{nombre}}</td>
             <td><a href="/materias?docente={{nombre}}">Ver</a></td>
+            <td>
+              <form method="post" action="/ver_maestros/deshabilitar">
+              <input name="docente" value="{{username}}" hidden>
+                <button class="btn btn-danger">Borrar</button>
+              </form>
+            </td>
           </tr>
     {{/with}}
     {{/each}}
