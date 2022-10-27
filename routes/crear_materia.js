@@ -27,8 +27,7 @@ const schema = Joi.object({
     .required(),
     h_final: Joi.string()
     .required(),
-    nomAlu: Joi.array()
-    .required(),
+    nomAlu: Joi.alternatives().try(Joi.array(), Joi.string())
 });
 
 passport.deserializeUser(
