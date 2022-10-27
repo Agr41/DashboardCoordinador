@@ -9,7 +9,7 @@
           <h5>Carrera y semestre</h5>
           <div class="col-md-8">
           <label>Carrera</label>
-          <select class="form-select" id="type" aria-label="Default select example" name="carrera" required>
+          <select class="form-select" required="true" id="type" aria-label="Default select example" name="carrera" >
             <option selected value= "">---Seleccione una carrera---</option>
             <option value="ISC">Ingeniería en Sistemas Computacionales</option>
             <option value="IM">Ingeniería Mecatrónica</option>
@@ -122,7 +122,7 @@ $(document).ready(function () {
       $("button").prop('disabled', false);
     });
     $("#size").change(function () {
-      $("#type").prop('disabled', true);
+      //$("#type").attr('readonly', "true");
     });
 });
 </script>

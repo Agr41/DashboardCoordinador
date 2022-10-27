@@ -27,7 +27,7 @@ const schema = Joi.object({
     .required(),
     h_final: Joi.string()
     .required(),
-    nomAlu: Joi.alternatives().try(Joi.array(), Joi.string())
+    nomAlu: Joi.alternatives().try(Joi.string(), Joi.array())
 });
 
 passport.deserializeUser(
@@ -130,7 +130,9 @@ for (var i = arrayAlu.length -1; i >= 0; i--){
 }
    valuesArr=cuotasOrig;*/
 let valuesArr=[]
-   for (var i = 0; i <= datos.nomAlu.length-1; i++){
+tipoDato= typeof datos.nomAlu;
+if (tipoDato !="string"){
+  for (var i = 0; i <= datos.nomAlu.length-1; i++){
 
     valuesArr[i]={
       "nombre":datos.nomAlu[i],
@@ -139,6 +141,16 @@ let valuesArr=[]
       "retardos":"-",
     }
  }
+}
+else{
+  valuesArr[0]={
+    "nombre":datos.nomAlu,
+    "calificacion":"-",
+    "inasistencias":"-",
+    "retardos":"-",
+  }
+}
+   
  let mensaje
  if(datos.tipo=="Ordinario" & valuesArr.length<5){
  mensaje="Debe añadir por lo menos 5 alumnos para materias ordinarias"
