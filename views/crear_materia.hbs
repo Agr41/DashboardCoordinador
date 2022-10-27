@@ -4,13 +4,12 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-          {{#if coordi}}
-           <form class="row g-3 needs-validation" action="/crear_materia/registro" method="post" novalidate>
+           <form class="row g-3 needs-validation" action="/crear_materia/registro" method="post">
           <h5>Carrera y semestre</h5>
           <div class="col-md-8">
           <label>Carrera</label>
-          <select class="form-select" id="type" aria-label="Default select example" name="carrera">
-            <option selected value="">---Seleccione una carrera---</option>
+          <select class="form-select" id="type" aria-label="Default select example" name="carrera" required>
+            <option selected value= "">---Seleccione una carrera---</option>
             <option value="ISC">Ingeniería en Sistemas Computacionales</option>
             <option value="IM">Ingeniería Mecatrónica</option>
             <option value="ISA">Ingeniería en Sistemas Automotrices</option>
@@ -19,8 +18,8 @@
           </div>
           <div class="col-md-4">
           <label>Semestre</label>
-          <select class="form-select" aria-label="Default select example" name="semestre">
-            <option selected>---Seleccione un semestre---</option>
+          <select class="form-select" aria-label="Default select example" name="semestre" required>
+            <option selected value="">---Seleccione un semestre---</option>
             <option value=1>Primero</option>
             <option value=2>Segundo</option>
             <option value=3>Tercero</option>
@@ -35,12 +34,12 @@
           <h5>Detalles</h5>
           <div class="col-md-6">
             <label>Nombre de la materia</label>
-            <input type="text" class="form-control" name="nombre" placeholder="Nombre de la materia">
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre de la materia" required>
           </div>
           <div class="col-md-6">
           <label>Docente</label>
-          <select class="form-select" aria-label="Default select example" name="docente">
-            <option selected>---Seleccione un docente---</option>
+          <select class="form-select" aria-label="Default select example" name="docente" required>
+            <option selected value= null>---Seleccione un docente---</option>
             {{#each maestro}}
               <option value="{{this.nombre}}" >{{this.nombre}}</option>
             {{/each}}
@@ -48,8 +47,8 @@
           </div>
           <div class="col-md-6">
           <label>Tipo</label>
-          <select class="form-select" aria-label="Default select example" name="tipo">
-            <option selected>---Seleccione un tipo---</option>
+          <select class="form-select" aria-label="Default select example" name="tipo" required>
+            <option selected value="">---Seleccione un tipo---</option>
             <option value="Ordinario">Ordinario</option>
             <option value="Extraordinario">Extraordinario</option>
             <option value="Recurso">Recurso</option>
@@ -58,31 +57,31 @@
           </div>
           <div class="col-md-6">
             <label>Ciclo</label>
-            <input class="form-control" type="text" placeholder="2022S2" name="ciclo">
+            <input class="form-control" type="text" placeholder="2022S2" name="ciclo" required>
           </div>
           <hr>
           <h5>Duración</h5>
           <div class="col-md-3">
             <label>Fecha de inicio</label>
-            <input class="form-control" type="date" name="f_inicio">
+            <input class="form-control" type="date" name="f_inicio" required>
           </div>
           <div class="col-md-3">
             <label>Fecha de fin</label>
-            <input class="form-control" type="date" name="f_final">
+            <input class="form-control" type="date" name="f_final" required>
           </div>
           <div class="col-md-3">
             <label>Hora de inicio</label>
-            <input class="form-control" type="time" name="h_inicio">
+            <input class="form-control" type="time" name="h_inicio" required>
           </div>
           <div class="col-md-3">
             <label>Hora de fin</label>
-            <input class="form-control" type="time" name="h_final">
+            <input class="form-control" type="time" name="h_final" required>
           </div>
           <hr>
           <h5>Alumnos</h5>
           <div class="col-md-8" id="alumnos">
             <label>Nombre</label>
-            <select class="form-select" id="size" aria-label="Default select example" name="nomAlu" disabled>
+            <select class="form-select" id="size" aria-label="Default select example" name="nomAlu" disabled required>
               <option value="">---</option>
             </select>
           </div>
@@ -95,9 +94,6 @@
             <button class="btn btn-success" type="submit">Crear materia</button>
           </div>
           </form>
-          {{else}}
-          Usted no tiene permiso para ver esta página
-          {{/if}}
         </div>
       </div>
      {{> footer}}
