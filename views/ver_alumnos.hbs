@@ -4,6 +4,7 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
+          {{#if coordi}}
           <div class="row">
           </div>
           <table class="table table-striped">
@@ -35,6 +36,9 @@
   </tbody>
 
           </table>
+          {{else}}
+          Usted no tiene permiso de ver esta página
+          {{/if}}
         </div>
       </div>
      {{> footer}}

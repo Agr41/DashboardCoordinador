@@ -12,11 +12,12 @@ passport.deserializeUser(
       done(err, user);});
 });
 
-async function detalleUsu(nombre, ciclo, tipo){
+async function detalleUsu(id){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('usuarios');
       let arregloUsu = await collection.aggregate([{$match:{active:true, root:{$ne:true}}}]).toArray();
+      let tipoUsu = await collection.aggregate([{$match:{username:id}}]).toArray();
       
       
       var dato = {arregloUsu}
@@ -34,10 +35,11 @@ router.get('/',(req, res, next) => {
 }, function(req, res, next) {
 
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
-          detalleUsu()
+          detalleUsu(req.user.username)
           .then((dato)=>{
             console.log(dato.arregloUsu)
-            res.render('ver_maestros', { title: "Ver maestros", datos:dato.arregloUsu});
+            console.log()
+            res.render('ver_maestros', { title: "Ver maestros", datos:dato.arregloUsu, coordi:req.user.coordi});
           })  
           .catch((err)=>{
               console.log(err);

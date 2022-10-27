@@ -12,11 +12,18 @@ passport.deserializeUser(
       done(err, user);});
 });
 
-async function detalleUsu(id){
+async function detalleUsu(id, user){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('materias');
-      let arregloMat = await collection.aggregate([{$match:{$or:[{carrera:id},{docente:id}]}}]).toArray();
+      let arregloMat=[];
+      if(user.coordi==true){
+        arregloMat = await collection.aggregate([{$match:{$or:[{carrera:id},{docente:id}]}}]).toArray();
+      }
+      else{
+        arregloMat = await collection.aggregate([{$match:{docente:user.nombre}}]).toArray();
+      }
+      
       
       
       var dato = {arregloMat}
@@ -43,7 +50,7 @@ router.get('/',(req, res, next) => {
           }
           console.log(query)
 
-          detalleUsu(query)
+          detalleUsu(query, req.user)
           .then((dato)=>{
             console.log(dato.arregloMat)
             res.render('materias', { title: "Materias", materias: dato.arregloMat});

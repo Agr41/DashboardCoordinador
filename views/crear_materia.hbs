@@ -4,6 +4,7 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
+          {{#if coordi}}
            <form class="row g-3 needs-validation" action="/crear_materia/registro" method="post" novalidate>
           <h5>Carrera y semestre</h5>
           <div class="col-md-8">
@@ -94,6 +95,9 @@
             <button class="btn btn-success" type="submit">Crear materia</button>
           </div>
           </form>
+          {{else}}
+          Usted no tiene permiso para ver esta página
+          {{/if}}
         </div>
       </div>
      {{> footer}}

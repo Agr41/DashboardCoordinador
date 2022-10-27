@@ -36,7 +36,7 @@ router.get('/',(req, res, next) => {
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
           detalleUsu()
           .then((dato)=>{
-            res.render('ver_alumnos', { title: "Ver alumnos", datos:dato.arregloAlu});
+            res.render('ver_alumnos', { title: "Ver alumnos", datos:dato.arregloAlu, coordi:req.user.coordi});
           })  
           .catch((err)=>{
               console.log(err);

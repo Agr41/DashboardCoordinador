@@ -4,6 +4,7 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
+          {{#if coordi}}
           <form class="row g-3 needs-validation" action="/crear_maestros/registro" method="post" novalidate>
   <div class="col-md-6">
     <label for="validationCustom01" class="form-label">Nombre completo</label>
@@ -69,6 +70,9 @@
     <button class="btn btn-primary" type="submit">Agregar usuario</button>
   </div>
 </form>
+{{else}}
+Usted no tiene permiso para ver esta página
+{{/if}}
         </div>
       </div>
      {{> footer}}

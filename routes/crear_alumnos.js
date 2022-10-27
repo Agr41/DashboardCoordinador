@@ -50,7 +50,16 @@ passport.deserializeUser(
         res.redirect('/')
     }
   }, function(req, res, next) {
-    res.render('crear_alumnos', {title: "Crear alumnos"});
+    detalleUsu(req.user.username)
+          .then((dato)=>{
+            res.render('crear_alumnos', { title: "Crear alumnos", coordi:dato[0].coordi});
+          })  
+          .catch((err)=>{
+              console.log(err);
+          })
+          .finally(()=>{
+              client.close
+          })
   });
  
 
@@ -95,8 +104,21 @@ passport.deserializeUser(
           carrera: datos.carrera,
           nombre:datos.nombre,
           active:datos.active
-        }
+        }, {upsert:true}
       );
       console.log(datos.usuario); 
   }
+
+  async function detalleUsu(id){
+    await client.connect();
+        const db = client.db(dbName);
+        const collection = db.collection('usuarios');
+        let arregloUsu = await collection.aggregate([{$match:{username:id}}]).toArray();
+        
+        
+        var dato = arregloUsu
+        console.log(dato)
+        return dato;
+    };
+  
     module.exports = router;
