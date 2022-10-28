@@ -31,7 +31,7 @@
           <table class="table table-striped">
               <thead>
     <tr>
-      <th scope="col">Matrícula</th>
+      {{!-- <th scope="col">Matrícula</th> --}}
       <th scope="col">Nombre</th>
       <th scope="col">Retardos</th>
       <th scope="col">Inasistencias</th>
@@ -43,7 +43,7 @@
       {{#with this}}
         {{#each alumnos}}
           <tr>
-            <th scope="row">{{matricula}}</th>
+            {{!-- <th scope="row">{{matricula}}</th> --}}
             <td><input type="text" class="form-control" name="nombre" placeholder="0" hidden value="{{nombre}}" required>{{nombre}}</td>
             <td><input type="number" class="form-control" name="retardos" placeholder="0" required></td>
             <td><input type="number" class="form-control" name="inasistencias" placeholder="0" required></td>
