@@ -38,11 +38,11 @@ passport.serializeUser(function(user, done) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   
-  res.render('login', { title: 'Iniciar sesión'});
+  res.render('login', { title: 'Iniciar sesión', error:req.query.error});
 });
 
 router.post('/auth', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  passport.authenticate('local', { failureRedirect: '/login?error=true' }),
   function(req, res) {
     res.redirect('/');
   });

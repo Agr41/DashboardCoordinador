@@ -21,9 +21,13 @@
                     <input class="form-control" required="true" type="password" name="password" placeholder="Contraseña">
                   </div>
                   <div class="row">
+                    {{#if error}}
+                    <p class="text-danger">Usuario o contraseña incorrectas</p>
+                    {{/if}}
                     <div class="col-6">
                       <button class="btn btn-success px-4" type="submit">Iniciar sesión</button>
                     </div>
+                    
                    {{!--  <div class="col-6 text-end">
                       <button class="btn btn-link px-0" type="button">Forgot password?</button>
                     </div> --}}
