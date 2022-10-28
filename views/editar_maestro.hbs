@@ -4,8 +4,98 @@
       {{> header}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
-          
+          {{#if coordi}}
+          <form class="row g-3 needs-validation" action="/crear_maestros/registro" method="post" novalidate>
+  <div class="col-md-6">
+    <label for="validationCustom01" class="form-label">Nombre completo</label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" name="nombre" required>
+    <div class="valid-feedback">
+      Correcto
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="validationCustomUsername" class="form-label">Correo institucional</label>
+    <div class="input-group has-validation">
+      <input type="email" class="form-control" name="correo" placeholder="matricula@halcones.ual.mx" id="validationCustomUsername" value="{{correo}}" aria-describedby="inputGroupPrepend" required>
+      <div class="invalid-feedback">
+        Por favor ingrese un correo.
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="validationCustom03" class="form-label">Contraseña (mín. 6 caracteres)</label>
+    <input type="password" class="form-control" id="validationCustom03" name="password" placeholder="******" required>
+    <div class="invalid-feedback">
+      Use al menos 6 caracteres. 
+    </div>
+  </div>
+  {{!-- <div class="col-md-3">
+    <label for="validationCustom04" class="form-label">State</label>
+    <select class="form-select" id="validationCustom04" required>
+      <option selected disabled value="">Choose...</option>
+      <option>...</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select a valid state.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustom05" class="form-label">Zip</label>
+    <input type="text" class="form-control" id="validationCustom05" required>
+    <div class="invalid-feedback">
+      Please provide a valid zip.
+    </div>
+  </div> --}}
+
+  <div class="col-md-6">
+{{#if root}}<label class="form-label">Tipo de usuario</label>{{/if}}
+      <select class="form-select" aria-label="Default select example" name="coordi"   
+{{#if root}}{{else}}hidden{{/if}}
+      >
+  <option value="" selected>Maestro</option>
+  <option value=true>Coordinador</option>
+      <label class="form-check-label" for="invalidCheck">
+        Tipo de usuario
+      </label>
+      <div class="invalid-feedback">
+        Seleccione un usuario.
+      </div>
+
+  </div>
+
+<div class="col-12">
+  <input type="hidden" name="active" value=true>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Agregar usuario</button>
+  </div>
+</form>
+{{else}}
+Usted no tiene permiso para ver esta página
+{{/if}}
         </div>
       </div>
      {{> footer}}
     </div>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+    </script>

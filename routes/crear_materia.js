@@ -150,12 +150,26 @@ else{
     "retardos":"-",
   }
 }
-   
+function isAfter(date1, date2) {
+  let d1 = new Date(date1);
+let d2 = new Date(date2);
+  return d1 > d2;
+}
+
+
  let mensaje
  if(datos.tipo=="Ordinario" & valuesArr.length<5){
  mensaje="Debe añadir por lo menos 5 alumnos para materias ordinarias"
  await collection.findOne({})
  }
+ else{if(isAfter(datos.f_inicio, datos.f_final)){
+  mensaje="La fecha de inicio no puede ser después que la fecha de finalización"
+ await collection.findOne({})
+ }
+ else{if(parseInt(datos.h_inicio)>parseInt(datos.h_final)){
+  mensaje="La hora de inicio no puede ser después que la hora de finalización"
+  await collection.findOne({})
+ } 
  else{
   mensaje = "Registro correcto"
   await collection.updateOne({
@@ -181,7 +195,7 @@ else{
 
     }}, {upsert:true}
     );
- }
+ }}}
   
     
     console.log(datos.usuario); 

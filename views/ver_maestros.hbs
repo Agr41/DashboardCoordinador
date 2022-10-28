@@ -24,7 +24,8 @@
             <td>
               <form method="post" action="/ver_maestros/deshabilitar">
               <input name="docente" value="{{username}}" hidden>
-                <button class="btn btn-danger">Borrar</button>
+                <a class="btn btn-warning" href="/editar_maestro?username={{username}}">Editar</a>
+                <button class="btn btn-danger">Deshabilitar</button>
               </form>
             </td>
           </tr>
