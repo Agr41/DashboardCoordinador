@@ -158,7 +158,14 @@ else{
  }
  else{
   mensaje = "Registro correcto"
-  await collection.insertOne(
+  await collection.updateOne({
+    carrera: datos.carrera,
+      semestre:datos.semestre,
+      nombre: datos.nombre,
+      docente:datos.docente,
+      tipo:datos.tipo,
+      ciclo:datos.ciclo,
+  },{$set:
     {
       carrera: datos.carrera,
       semestre:datos.semestre,
@@ -172,7 +179,7 @@ else{
       hora_fin:datos.h_final,
       alumnos:valuesArr
 
-    }, {upsert:true}
+    }}, {upsert:true}
     );
  }
   

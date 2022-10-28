@@ -8,7 +8,7 @@ const Joi = require('joi');
 const schema = Joi.object({
     // calificacion: Joi.array()
     // .required(),
-    nombre: Joi.array()
+    nombre: Joi.alternatives().try(Joi.string(), Joi.array())
     .required(),
     ciclo: Joi.string()
     .required(),
@@ -16,15 +16,15 @@ const schema = Joi.object({
     .required(),
     tipo: Joi.string()
     .required(),
-    inasistencias: Joi.array()
+    inasistencias: Joi.alternatives().try(Joi.string(), Joi.array())
     .required(),
-    retardos: Joi.array()
+    retardos: Joi.alternatives().try(Joi.string(), Joi.array())
     .required(),
-    calificacion: Joi.array()
+    calificacion: Joi.alternatives().try(Joi.string(), Joi.array())
     .required(),
     // nombre: Joi.array()
     // .required(),
-    retardos: Joi.array()
+    retardos: Joi.alternatives().try(Joi.string(), Joi.array())
     .required(),
     
 });
@@ -108,15 +108,35 @@ router.post('/subir', async function(req, res, next){
 
 async function regUser(datos){
   let valuesArr=[]
-   for (var i = 0; i <= datos.calificacion.length-1; i++){
+//    for (var i = 0; i <= datos.calificacion.length-1; i++){
+
+//     valuesArr[i]={
+//       "nombre":datos.nombre[i],
+//       "calificacion":datos.calificacion[i],
+//       "inasistencias":datos.inasistencias[i],
+//       "retardos":datos.retardos[i],
+//     }
+//  }
+tipoDato= typeof datos.nombre;
+if (tipoDato !="string"){
+  for (var i = 0; i <= datos.nombre.length-1; i++){
 
     valuesArr[i]={
       "nombre":datos.nombre[i],
-      "calificacion":datos.calificacion[i],
-      "inasistencias":datos.inasistencias[i],
-      "retardos":datos.retardos[i],
+       "calificacion":datos.calificacion[i],
+       "inasistencias":datos.inasistencias[i],
+       "retardos":datos.retardos[i],
     }
  }
+}
+else{
+  valuesArr[0]={
+    "nombre":datos.nombre,
+    "calificacion":datos.calificacion,
+    "inasistencias":datos.inasistencias,
+    "retardos":datos.retardos,
+  }
+}
   await client.connect();
   console.log('Connected successfully to server');
   const db = client.db(dbName);
@@ -124,7 +144,7 @@ async function regUser(datos){
   await collection.updateOne({nombre:datos.materia, tipo:datos.tipo, ciclo:datos.ciclo},{$set:{
     alumnos:valuesArr,
     sent:true
-  }}
+  }},
     );
     console.log(datos.usuario); 
 }
