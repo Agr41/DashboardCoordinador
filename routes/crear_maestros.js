@@ -54,7 +54,7 @@ passport.deserializeUser(
   }, function(req, res, next) {
     detalleUsu(req.user.username)
     .then((dato)=>{
-      res.render('crear_maestros', { title: "Crear maestros", coordi:dato[0].coordi});
+      res.render('crear_maestros', { title: "Crear maestros", coordi:dato[0].coordi, root:dato[0].root});
     })  
     .catch((err)=>{
         console.log(err);

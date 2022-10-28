@@ -48,9 +48,9 @@
   </div> --}}
 
   <div class="col-md-6">
-<label class="form-label">Tipo de usuario</label>
+{{#if root}}<label class="form-label">Tipo de usuario</label>{{/if}}
       <select class="form-select" aria-label="Default select example" name="coordi"   
-      {{!-- {{#if root}}{{else}}hidden{{/if}} --}}
+{{#if root}}{{else}}hidden{{/if}}
       >
   <option value="" selected>Maestro</option>
   <option value=true>Coordinador</option>
