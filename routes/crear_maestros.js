@@ -102,14 +102,17 @@ passport.deserializeUser(
     const collection = db.collection('usuarios');
     var hash = await bcrypt.hash(datos.password, saltRounds);
     console.log(hash + "externo");
-    await collection.insertOne(
+    await collection.updateOne(
         {
+          username: datos.correo,
+        },
+        {$set: {
           username: datos.correo,
           password: hash,
           nombre:datos.nombre,
           coordi: Boolean(datos.coordi),
           active:datos.active
-        }, {upsert:true}
+        }}, {upsert:true}
       );
       console.log(datos.usuario); 
   }

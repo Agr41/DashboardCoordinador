@@ -98,13 +98,16 @@ passport.deserializeUser(
     console.log('Connected successfully to server');
     const db = client.db(dbName);
     const collection = db.collection('alumnos');
-    await collection.insertOne(
+    await collection.updateOne(
         {
+          matricula: datos.matricula,
+        },
+        {$set:{
           matricula: datos.matricula,
           carrera: datos.carrera,
           nombre:datos.nombre,
           active:datos.active
-        }, {upsert:true}
+        }}, {upsert:true}
       );
       console.log(datos.usuario); 
   }
