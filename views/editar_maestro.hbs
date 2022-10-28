@@ -52,8 +52,8 @@
       <select class="form-select" aria-label="Default select example" name="coordi"   
 {{#if root}}{{else}}hidden{{/if}}
       >
-  <option value="" selected>Maestro</option>
-  <option value=true>Coordinador</option>
+  <option value="">Maestro</option>
+  <option value=true{{#if coordi}} selected{{/if}}>Coordinador</option>
       <label class="form-check-label" for="invalidCheck">
         Tipo de usuario
       </label>
@@ -67,7 +67,7 @@
   <input type="hidden" name="active" value=true>
   </div>
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Agregar usuario</button>
+    <button class="btn btn-primary" type="submit">Editar usuario</button>
   </div>
 </form>
 {{else}}
