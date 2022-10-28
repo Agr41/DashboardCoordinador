@@ -8,7 +8,8 @@
           <form class="row g-3 needs-validation" action="/crear_maestros/registro" method="post" novalidate>
   <div class="col-md-6">
     <label for="validationCustom01" class="form-label">Nombre completo</label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Nombre" name="nombre" required>
+    <input type="text" class="form-control" value="{{nombre}}" id="validationCustom01" placeholder="Nombre" name="nombre" required>
+    
     <div class="valid-feedback">
       Correcto
     </div>
@@ -29,17 +30,14 @@
       Use al menos 6 caracteres. 
     </div>
   </div>
-  {{!-- <div class="col-md-3">
-    <label for="validationCustom04" class="form-label">State</label>
-    <select class="form-select" id="validationCustom04" required>
-      <option selected disabled value="">Choose...</option>
-      <option>...</option>
-    </select>
+  <div class="col-md-3">
+    <label for="validationCustom04" class="form-label"></label>
+    {{!-- <input type="text" class="form-control" value="{{nombre}}" id="validationCustom04" placeholder="Nombre" name="nombre2"> --}}
     <div class="invalid-feedback">
       Please select a valid state.
     </div>
   </div>
-  <div class="col-md-3">
+  {{!-- <<div class="col-md-3">
     <label for="validationCustom05" class="form-label">Zip</label>
     <input type="text" class="form-control" id="validationCustom05" required>
     <div class="invalid-feedback">
@@ -53,7 +51,7 @@
 {{#if root}}{{else}}hidden{{/if}}
       >
   <option value="">Maestro</option>
-  <option value=true{{#if coordi}} selected{{/if}}>Coordinador</option>
+  <option value=true {{#if coordi}}selected{{else}}{{/if}}>Coordinador</option>
       <label class="form-check-label" for="invalidCheck">
         Tipo de usuario
       </label>

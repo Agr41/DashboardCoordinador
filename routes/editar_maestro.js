@@ -9,6 +9,8 @@ const saltRounds = 10;
 const Joi = require('joi');
 
 const schema = Joi.object({
+  nombre2: Joi.string()
+  .min(0),
     correo: Joi.string()
     .min(7)
     .required(),
@@ -22,7 +24,9 @@ const schema = Joi.object({
     coordi: Joi.string()
     .min(0),
     active: Joi.boolean()
-    .required()
+    .required(),
+    
+
     
 });
 
@@ -54,7 +58,7 @@ passport.deserializeUser(
   }, function(req, res, next) {
     detalleUsu(req.user.username)
     .then((dato)=>{
-      res.render('editar_maestro', { title: "Editar maestros", coordi:dato[0].coordi, root:dato[0].root, correo:req.query.username});
+      res.render('editar_maestro', { title: "Editar maestros", coordi:dato[0].coordi, root:dato[0].root, correo:req.query.username, nombre:req.query.nombre});
     })  
     .catch((err)=>{
         console.log(err);
@@ -113,6 +117,14 @@ passport.deserializeUser(
           coordi: Boolean(datos.coordi),
           active:datos.active
         }}, {upsert:true}
+      );
+      await db.collection('materias').updateOne(
+        {
+          docente: datos.nombre2,
+        },
+        {$set: {
+          docente:datos.nombre,
+        }}
       );
       console.log(datos.usuario); 
   }
