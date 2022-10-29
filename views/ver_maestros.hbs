@@ -8,7 +8,7 @@
           <table class="table table-striped">
               <thead>
     <tr>
-      <th scope="col">Correo</th>
+      {{!-- <th scope="col">Correo</th> --}}
       <th scope="col">Nombre</th>
       <th scope="col">Materias</th>
       <th scope="col"></th>
@@ -18,8 +18,8 @@
     {{#each datos}}
       {{#with this}}
           <tr>
-            <th scope="row">{{username}}</th>
-            <td>{{nombre}}</td>
+            {{!-- <th scope="row">{{username}}</th> --}}
+            <td data-toggle="tooltip" data-placement="right" title="{{username}}">{{nombre}}</td>
             <td><a href="/materias?docente={{nombre}}">Ver</a></td>
             <td>
               <form method="post" action="/ver_maestros/deshabilitar">
@@ -31,7 +31,7 @@
           </tr>
     {{/with}}
     {{/each}}
-    
+
   </tbody>
 
           </table>

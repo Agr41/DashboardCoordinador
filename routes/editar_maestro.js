@@ -56,9 +56,9 @@ passport.deserializeUser(
         res.redirect('/')
     }
   }, function(req, res, next) {
-    detalleUsu(req.user.username)
+    detalleUsu(req.query.username)
     .then((dato)=>{
-      res.render('editar_maestro', { title: "Editar maestros", coordi:dato[0].coordi, root:dato[0].root, correo:req.query.username, nombre:req.query.nombre});
+      res.render('editar_maestro', { title: "Editar maestros", coordi:req.user.coordi, root:req.user.root, correo:req.query.username, nombre:req.query.nombre, isCoordi:dato[0]});
     })  
     .catch((err)=>{
         console.log(err);
