@@ -8,13 +8,13 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const Joi = require('joi');
 
-const schema = Joi.object({
-  nombre2: Joi.string()
+
+var schema = Joi.object({
+  nOrig: Joi.string()
   .min(0),
     correo: Joi.string()
     .min(7)
     .required(),
-
     password: Joi.string()
     .min(6)
     .required(),
@@ -70,6 +70,7 @@ passport.deserializeUser(
  
 
   router.post('/registro', async function(req, res, next){
+
     try{
     var value = await schema.validateAsync(req.body);
     console.log(value);
@@ -94,7 +95,7 @@ passport.deserializeUser(
     }
     catch (err) { 
       res.send(`<script>alert("Por favor complete todos los campos")
-        window.location.href='/editar_maestros';
+        window.location.href='/editar_maestro';
         </script>`), console.log(err); }    
     //}
   });
@@ -118,15 +119,16 @@ passport.deserializeUser(
           active:datos.active
         }}, {upsert:true}
       );
+
       await db.collection('materias').updateOne(
         {
-          docente: datos.nombre2,
+          docente: datos.nOrig,
         },
         {$set: {
           docente:datos.nombre,
         }}
       );
-      console.log(datos.usuario); 
+      console.log(datos.nombre2); 
   }
 
   async function detalleUsu(id){
