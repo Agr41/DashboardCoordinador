@@ -38,7 +38,7 @@
     {{#each datos}}
       {{#with this}}
         {{#each alumnos}}
-          <tr>
+          <tr {{#if reprobado}}class="table-danger"{{/if}}>
             {{!-- <th scope="row">{{matricula}}</th> --}}
             <td>{{nombre}}</td>
             <td>{{retardos}}</td>

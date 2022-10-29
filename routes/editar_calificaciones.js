@@ -6,27 +6,29 @@ var {client,dbName} = require('../db/mongo');
 const Joi = require('joi');
 
 const schema = Joi.object({
-    // calificacion: Joi.array()
-    // .required(),
-    nombre: Joi.array()
-    .required(),
-    ciclo: Joi.string()
-    .required(),
-    materia: Joi.string()
-    .required(),
-    tipo: Joi.string()
-    .required(),
-    inasistencias: Joi.array()
-    .required(),
-    retardos: Joi.array()
-    .required(),
-    calificacion: Joi.array()
-    .required(),
-    // nombre: Joi.array()
-    // .required(),
-    retardos: Joi.array()
-    .required(),
-    
+  // calificacion: Joi.array()
+  // .required(),
+  nombre: Joi.alternatives().try(Joi.string(), Joi.array())
+  .required(),
+  ciclo: Joi.string()
+  .required(),
+  materia: Joi.string()
+  .required(),
+  tipo: Joi.string()
+  .required(),
+  inasistencias: Joi.alternatives().try(Joi.string(), Joi.array())
+  .required(),
+  retardos: Joi.alternatives().try(Joi.string(), Joi.array())
+  .required(),
+  calificacion: Joi.alternatives().try(Joi.string(), Joi.array())
+  .required(),
+  // nombre: Joi.array()
+  // .required(),
+  retardos: Joi.alternatives().try(Joi.string(), Joi.array())
+  .required(),
+  comentarios: Joi.string()
+  .min(0),
+  
 });
 
 passport.deserializeUser(
@@ -108,24 +110,45 @@ router.post('/subir', async function(req, res, next){
 
 async function regUser(datos){
   let valuesArr=[]
-   for (var i = 0; i <= datos.calificacion.length-1; i++){
-
-    valuesArr[i]={
-      "nombre":datos.nombre[i],
-      "calificacion":datos.calificacion[i],
-      "inasistencias":datos.inasistencias[i],
-      "retardos":datos.retardos[i],
+  tipoDato= typeof datos.nombre;
+  if (tipoDato !="string"){
+    for (var i = 0; i <= datos.nombre.length-1; i++){
+      let reprobado = false;
+      if (parseInt(datos.calificacion[i])<70){
+        reprobado=true;
+      }
+      valuesArr[i]={
+        "nombre":datos.nombre[i],
+         "calificacion":datos.calificacion[i],
+         "inasistencias":datos.inasistencias[i],
+         "retardos":datos.retardos[i],
+         "reprobado":reprobado
+      }
+   }
+  }
+  else{
+    let reprobado = false;
+    if (parseInt(datos.calificacion)<70){
+      reprobado=true;
     }
- }
-  await client.connect();
-  console.log('Connected successfully to server');
-  const db = client.db(dbName);
-  const collection = db.collection('materias');
-  await collection.updateOne({nombre:datos.materia, tipo:datos.tipo, ciclo:datos.ciclo},{$set:{
-    alumnos:valuesArr,
-  }}
-    );
-    console.log(datos.usuario); 
-}
+    valuesArr[0]={
+      "nombre":datos.nombre,
+      "calificacion":datos.calificacion,
+      "inasistencias":datos.inasistencias,
+      "retardos":datos.retardos,
+      "reprobado":reprobado
+    }
+  }
+    await client.connect();
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    const collection = db.collection('materias');
+    await collection.updateOne({nombre:datos.materia, tipo:datos.tipo, ciclo:datos.ciclo},{$set:{
+      alumnos:valuesArr,
+      sent:true,
+    }},
+      );
+      console.log(datos.usuario); 
+  }
 
 module.exports = router;

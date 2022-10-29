@@ -26,6 +26,8 @@ const schema = Joi.object({
     // .required(),
     retardos: Joi.alternatives().try(Joi.string(), Joi.array())
     .required(),
+    comentarios: Joi.string()
+    .min(0),
     
 });
 
@@ -120,21 +122,30 @@ async function regUser(datos){
 tipoDato= typeof datos.nombre;
 if (tipoDato !="string"){
   for (var i = 0; i <= datos.nombre.length-1; i++){
-
+    let reprobado = false;
+    if (parseInt(datos.calificacion)<70){
+      reprobado=true;
+    }
     valuesArr[i]={
       "nombre":datos.nombre[i],
        "calificacion":datos.calificacion[i],
        "inasistencias":datos.inasistencias[i],
        "retardos":datos.retardos[i],
+       "reprobado":reprobado
     }
  }
 }
 else{
+  let reprobado = false;
+  if (parseInt(datos.calificacion)<70){
+    reprobado=true;
+  }
   valuesArr[0]={
     "nombre":datos.nombre,
     "calificacion":datos.calificacion,
     "inasistencias":datos.inasistencias,
     "retardos":datos.retardos,
+    "reprobado":reprobado
   }
 }
   await client.connect();
@@ -143,7 +154,8 @@ else{
   const collection = db.collection('materias');
   await collection.updateOne({nombre:datos.materia, tipo:datos.tipo, ciclo:datos.ciclo},{$set:{
     alumnos:valuesArr,
-    sent:true
+    sent:true,
+    comentarios:datos.comentarios
   }},
     );
     console.log(datos.usuario); 

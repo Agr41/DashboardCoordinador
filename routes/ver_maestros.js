@@ -16,7 +16,13 @@ async function detalleUsu(id){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('usuarios');
-      let arregloUsu = await collection.aggregate([{$match:{active:true, root:{$ne:true}}}]).toArray();
+      let arregloUsu
+      if(id===true){
+      arregloUsu = await collection.aggregate([{$match:{root:{$ne:true}}}]).sort({nombre: 1}).toArray();
+      }
+      else{
+      arregloUsu = await collection.aggregate([{$match:{coordi:false, active:true, root:{$ne:true}}}]).sort({nombre: 1}).toArray();
+      }
       let tipoUsu = await collection.aggregate([{$match:{username:id}}]).toArray();
       
       
@@ -35,11 +41,11 @@ router.get('/',(req, res, next) => {
 }, function(req, res, next) {
 
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
-          detalleUsu(req.user.username)
+          detalleUsu(req.user.root)
           .then((dato)=>{
             console.log(dato.arregloUsu)
             console.log()
-            res.render('ver_maestros', { title: "Ver maestros", datos:dato.arregloUsu, coordi:req.user.coordi});
+            res.render('ver_maestros', { title: "Ver maestros", datos:dato.arregloUsu, coordi:req.user.coordi, sudo:req.user.root});
           })  
           .catch((err)=>{
               console.log(err);
@@ -61,7 +67,7 @@ router.post('/deshabilitar', async function(req, res, next){
     .then(()=>{
       //AÑADIR MENSAJE DE ÉXITO DESPUÉS
       res.send(`<script>alert("Usuario deshabilitado")
-      window.location.href='/';
+      window.location.href='/ver_maestros';
       </script>`);
       res.redirect('/ver_maestros');
       console.log("Usuario deshabilitado");
@@ -77,7 +83,39 @@ router.post('/deshabilitar', async function(req, res, next){
   }
   catch (err) { 
     res.send(`<script>alert("Hubo algún error")
-      window.location.href='/';
+      window.location.href='/ver_maestros';
+      </script>`), console.log(err); 
+      res.redirect('/ver_maestros');
+    }    
+  //}
+});
+router.post('/habilitar', async function(req, res, next){
+  try{
+  var value = req.body.docente
+  console.log(value);
+  //if (value = {}){
+  //}else{
+  habUser(value)
+    .then(()=>{
+      //AÑADIR MENSAJE DE ÉXITO DESPUÉS
+      res.send(`<script>alert("Usuario habilitado")
+      window.location.href='/ver_maestros';
+      </script>`);
+      res.redirect('/ver_maestros');
+      console.log("Usuario habilitado");
+    })
+    .catch((err)=>{
+      
+      console.log(err);
+      
+    })
+    .finally(()=>{
+      client.close()
+    })
+  }
+  catch (err) { 
+    res.send(`<script>alert("Hubo algún error")
+      window.location.href='/ver_maestros';
       </script>`), console.log(err); 
       res.redirect('/ver_maestros');
     }    
@@ -91,6 +129,17 @@ async function regUser(datos){
   const collection = db.collection('usuarios');
   await collection.updateOne({username:datos},{$set:{
     active:false
+  }}
+    );
+    console.log(datos.usuario); 
+}
+async function habUser(datos){
+  await client.connect();
+  console.log('Connected successfully to server');
+  const db = client.db(dbName);
+  const collection = db.collection('usuarios');
+  await collection.updateOne({username:datos},{$set:{
+    active:true
   }}
     );
     console.log(datos.usuario); 

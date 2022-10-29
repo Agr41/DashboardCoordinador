@@ -16,7 +16,7 @@ async function detalleUsu(){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('alumnos');
-      let arregloAlu = await collection.aggregate([{$match:{active:true}}]).toArray();
+      let arregloAlu = await collection.aggregate([{$match:{active:true}}]).sort({nombre: 1}).toArray();
       
       
       var dato = {arregloAlu}

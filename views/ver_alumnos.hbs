@@ -19,7 +19,7 @@
     {{#each datos}}
       {{#with this}}
           <tr>
-            <td>{{nombre}}</td>
+            <td data-toggle="tooltip" data-placement="right" title="{{matricula}}">{{nombre}}</td>
             <td>{{carrera}}</td>
             <td>
               <form method="post" action="/ver_alumnos/deshabilitar">

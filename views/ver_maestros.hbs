@@ -22,14 +22,21 @@
             <td data-toggle="tooltip" data-placement="right" title="{{username}}">{{nombre}}</td>
             <td><a href="/materias?docente={{nombre}}">Ver</a></td>
             <td>
+              {{#if active}}
               <form method="post" action="/ver_maestros/deshabilitar">
               <input name="docente" value="{{username}}" hidden>
-                <a class="btn btn-warning" href="/editar_maestro?username={{username}}&nombre={{nombre}}">Editar</a>
+                <a class="btn btn-warning" href="/editar_maestro?username={{username}}&nombre={{nombre}}">Editar</a>              
                 <button class="btn btn-danger">Deshabilitar</button>
               </form>
+              {{else}}
+              <form method="post" action="/ver_maestros/habilitar">
+              <input name="docente" value="{{username}}" hidden>              
+                <button class="btn btn-success">Habilitar</button>
+              </form>
+              {{/if}}
             </td>
           </tr>
-    {{/with}}
+      {{/with}}
     {{/each}}
 
   </tbody>
