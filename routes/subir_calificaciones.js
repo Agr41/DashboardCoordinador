@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var {client,dbName} = require('../db/mongo');
+const fileUpload = require('express-fileupload');
 
 const Joi = require('joi');
 
@@ -83,6 +84,7 @@ router.post('/subir', async function(req, res, next){
   console.log(value);
   //if (value = {}){
   //}else{
+  
   regUser(value)
     .then(()=>{
       //AÑADIR MENSAJE DE ÉXITO DESPUÉS
@@ -104,7 +106,9 @@ router.post('/subir', async function(req, res, next){
   catch (err) { 
     res.send(`<script>alert("Por favor complete todos los campos")
       window.location.href='/';
-      </script>`), console.log(err); }    
+      </script>`), console.log(err); } 
+      
+      
   //}
 });
 

@@ -21,7 +21,7 @@ async function detalleUsu(id, user){
         arregloMat = await collection.aggregate([{$match:{$or:[{carrera:id},{docente:id}]}}]).toArray();
       }
       else{
-        arregloMat = await collection.aggregate([{$match:{docente:user.nombre}}]).toArray();
+        arregloMat = await collection.aggregate([{$match:{docente:user.nombre,carrera:id}}]).toArray();
       }
       
       
