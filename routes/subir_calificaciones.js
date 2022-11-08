@@ -17,16 +17,14 @@ const schema = Joi.object({
     .required(),
     tipo: Joi.string()
     .required(),
-    inasistencias: Joi.alternatives().try(Joi.string(), Joi.array())
+    inasistencias: Joi.alternatives().try(Joi.number().min(0).max(80), Joi.array())
     .required(),
-    retardos: Joi.alternatives().try(Joi.string(), Joi.array())
+    retardos: Joi.alternatives().try(Joi.number().min(0).max(80),Joi.string(), Joi.array())
     .required(),
-    calificacion: Joi.alternatives().try(Joi.string(), Joi.array())
+    calificacion: Joi.alternatives().try(Joi.number().min(10).max(100), Joi.array())
     .required(),
     // nombre: Joi.array()
     // .required(),
-    retardos: Joi.alternatives().try(Joi.string(), Joi.array())
-    .required(),
     comentarios: Joi.string()
     .min(0),
     
@@ -104,7 +102,7 @@ router.post('/subir', async function(req, res, next){
     })
   }
   catch (err) { 
-    res.send(`<script>alert("Por favor complete todos los campos")
+    res.send(`<script>alert("Por favor complete correctamente todos los campos")
       window.location.href='/';
       </script>`), console.log(err); } 
       

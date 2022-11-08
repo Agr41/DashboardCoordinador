@@ -78,16 +78,8 @@
           </div>
           <hr>
           <h5>Alumnos</h5>
-          <div class="col-md-8" id="alumnos">
-            <label>Nombre</label>
-            <select class="form-select" id="size" aria-label="Default select example" name="nomAlu" disabled required>
-              <option value="">---</option>
-            </select>
-          </div>
-          <div class="col-md-4">
-            <br>
-            <button type="button" class="btn btn-dark" id="btn-agregar" onclick="cloneSelect()" disabled>Agregar más alumnos</button>
-            <button type="button" class="btn btn-danger" id="btn-borrar" disabled>Quitar alumno</button>
+          <div  id="size">
+
           </div>
           <div class="col-12">
             <button class="btn btn-success" type="submit">Crear materia</button>
@@ -106,41 +98,22 @@ $(document).ready(function () {
     $("#type").change(function () {
         var val = $(this).val();
         if (val == "") {
-            $("#size").html("<option>---</option>");
+            $("#size").html("");
         } else if (val == "ISC") {
-            $("#size").html("{{#each aluISC}}<option value='{{this.nombre}}'>{{this.nombre}}</option>{{/each}}");
+            $("#size").html("{{#each aluISC}}<div class='form-check' id='size'><input class='form-check-input' name='nomAlu' type='checkbox' value='{{this.nombre}}' id='flexCheckDefault'> <label class='form-check-label' for='flexCheckDefault'> {{this.nombre}}</label></div>{{/each}}");
         } else if (val == "ISA") {
-            $("#size").html("{{#each aluISA}}<option value='{{this.nombre}}'>{{this.nombre}}</option>{{/each}}");
+            $("#size").html("{{#each aluISA}}<div class='form-check' id='size'><input class='form-check-input' name='nomAlu' type='checkbox' value='{{this.nombre}}' id='flexCheckDefault'> <label class='form-check-label' for='flexCheckDefault'> {{this.nombre}}</label></div>{{/each}}");
         } else if (val == "IIS") {
-            $("#size").html("{{#each aluIIS}}<option value='{{this.nombre}}'>{{this.nombre}}</option>{{/each}}");
+            $("#size").html("{{#each aluIIS}}<div class='form-check' id='size'><input class='form-check-input' name='nomAlu' type='checkbox' value='{{this.nombre}}' id='flexCheckDefault'> <label class='form-check-label' for='flexCheckDefault'> {{this.nombre}}</label></div>{{/each}}");
         } else if (val == "IM") {
-            $("#size").html("{{#each aluIM}}<option value='{{this.nombre}}'>{{this.nombre}}</option>{{/each}}");
+            $("#size").html("{{#each aluIM}}<div class='form-check' id='size'><input class='form-check-input' name='nomAlu' type='checkbox' value='{{this.nombre}}' id='flexCheckDefault'> <label class='form-check-label' for='flexCheckDefault'> {{this.nombre}}</label></div>{{/each}}");
         }
       $("select").prop('disabled', false);
       $("button").prop('disabled', false);
     });
-    $("#size").change(function () {
-      //$("#type").attr('readonly', "true");
-    });
 });
 </script>
-<script>
-$("#btn-borrar").click(function() {  
-  $("#"+(selectionCounter-1)).remove();
-  selectionCounter--
-});
-</script>
-<script>
-  var selectionCounter = 0
-function cloneSelect() {
-  var select = document.getElementById("size")
-  var clone = select.cloneNode(true)
-  var name = select.getAttribute("name") //+ selectionCounter++
-  clone.id = selectionCounter++
-  clone.setAttribute("name", name)
-  document.getElementById("alumnos").appendChild(clone)
-}  
-</script>
+
 
 
 
