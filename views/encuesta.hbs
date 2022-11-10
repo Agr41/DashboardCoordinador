@@ -1,0 +1,25 @@
+ {{> sidebar}}
+<div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      {{> header}}
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+  <tbody>
+
+    {{#each datos}}
+      {{#with this}}   
+
+          <tr>
+            <td data-toggle="tooltip" data-placement="right" title="{{username}}">{{nombre}}</td>
+            <td><a href="/encuesta2?docente={{nombre}}">Encuesta</a></td>
+            <td>
+          </tr>
+
+    {{/with}}
+    {{/each}}
+      </tbody>
+
+        </div>
+      </div>
+     {{> footer}}
+    </div>
+

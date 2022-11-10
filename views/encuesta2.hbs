@@ -1,0 +1,257 @@
+
+{{> sidebar}}
+<div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      {{> header}}
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <div class="row">
+
+
+                    <ul class="people_list">
+                      <li>Encuesta sobre desempeño del docente: {{docente}}</li>
+                    </ul>
+
+
+
+<!--Pasar valor desde el href que ese valor se almacene junto con el post de la encuesta.-->
+                                  
+  <form action="/encuesta2/resultados" method="POST" enctype="multipart/form-data">
+
+      <input type="hidden" class="form-control" placeholder="Docente"
+    id="docente" name="docente" value="{{docente}}">
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">Consideras que el docente domina la materia para la comprensión de los contenidos</label>
+
+      <br />
+  <input  class="form-check-input" name="valor1" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor1" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor1" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor1" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">Promovió la realización de actividades académicas</label>
+
+      <br />
+  <input  class="form-check-input" name="valor2" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor2" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor2" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor2" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">Relacionó los temas de su clase con otras materias que son antecedentes y además con otras materias del mismo semestre y el aprendizaje se complementó</label>
+
+      <br />
+  <input  class="form-check-input" name="valor3" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor3" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor3" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor3" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">Durante el curso el profesor revisó las tareas o trabajos escolares y te dio retroalimentación sobre tu desempeño</label>
+
+      <br />
+  <input  class="form-check-input" name="valor4" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor4" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor4" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor4" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">En clase se emplearon recursos y medios educativos para un mejor logro del aprendizaje</label>
+
+      <br />
+  <input  class="form-check-input" name="valor5" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor5" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor5" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor5" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">El maestro estuvo orientando tu aprendizaje durante todo el curso</label>
+
+      <br />
+  <input  class="form-check-input" name="valor6" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor6" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor6" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor6" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">Se explicó la forma de evaluación del curso al incio del mismo</label>
+
+      <br />
+  <input  class="form-check-input" name="valor7" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor7" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor7" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor7" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">Se tomaron en consideración las actitudes para la evaluación final</label>
+
+      <br />
+  <input  class="form-check-input" name="valor8" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor8" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor8" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor8" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">Promovió aprendizajes del curso para la vida laboral o cotidiana</label>
+
+      <br />
+  <input  class="form-check-input" name="valor9" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor9" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor9" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor9" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">Mejoraste el nivel de tu aprendizaje de la asignatura en este curso</label>
+
+      <br />
+  <input  class="form-check-input" name="valor10" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor10" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor10" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor10" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+              <div class="control-group">
+    <div class="form-check">
+     
+      <label class="btn col-sm-3 form-label">Promovió un buen ejempo con su presentación personal, así como la puntualidad y la asistencia las clases</label>
+
+      <br />
+  <input  class="form-check-input" name="valor11" type="radio" value="4">4
+<br />
+<input class="form-check-input" name="valor11" type="radio" value="3">3
+<br />
+<input class="form-check-input" name="valor11" type="radio" value="2" checked="checked">2
+<br />
+
+<input class="form-check-input" name="valor11" type="radio" value="1" checked="checked">1
+<br />
+
+    </div>
+    </div>
+
+<div class="control-group">
+<div class="form-group floating-label-form-group controls">
+<label>Comentarios</label>
+<textarea rows="5" class="form-control"
+id="body" name="body" ></textarea>
+</div>
+</div>
+
+                            <div class="form-group position-relative">
+                            <button type="submit" class="position-absolute top-0 start-50 translate-middle-x btn btn-outline-primary col-6 col-form-label"
+                            id="sendMessageButton">Enviar encuesta</button>
+                            </div>
+
+                            </form>
+
+          </div>
+              
+
+        </div>
+      </div>
+     {{> footer}}
+    </div>

@@ -23,7 +23,8 @@ var ver_alumnosRouter = require('./routes/ver_alumnos');
 var ver_maestrosRouter = require('./routes/ver_maestros');
 var ver_calificacionesRouter = require('./routes/ver_calificaciones');
 var editar_alumnosRouter = require('./routes/editar_alumnos');
-
+var encuesta_Router = require('./routes/encuesta')
+var encuesta2_Router= require('./routes/encuesta2')
 var app = express();
 
 hbs.registerPartials(__dirname + "/views/partials");
@@ -58,6 +59,8 @@ app.use('/ver_alumnos', ver_alumnosRouter);
 app.use('/ver_maestros', ver_maestrosRouter);
 app.use('/ver_calificaciones', ver_calificacionesRouter);
 app.use('/editar_alumnos', editar_alumnosRouter);
+app.use('/encuesta', encuesta_Router);
+app.use('/encuesta2', encuesta2_Router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
