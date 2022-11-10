@@ -1,5 +1,3 @@
-
-{{> sidebar}}
 <div class="wrapper d-flex flex-column min-vh-100 bg-light">
       {{> header}}
       <div class="body flex-grow-1 px-3">
@@ -44,10 +42,10 @@
         {{#each alumnos}}
           <tr>
             {{!-- <th scope="row">{{matricula}}</th> --}}
-            <td><input type="text" class="form-control" name="nombre" placeholder="0" hidden value="{{nombre}}" required>{{nombre}}</td>
-            <td><input type="number" class="form-control" name="retardos" placeholder="0"value={{retardos}} required></td>
-            <td><input type="number" class="form-control" name="inasistencias" placeholder="0" value={{inasistencias}} required></td>
-            <td><input type="number" class="form-control" name="calificacion" placeholder="10/100" value={{calificacion}} required></td>
+            <td><input type="text" class="form-control" name="nombre" placeholder="0" hidden value="{{nombre}}"  required>{{nombre}}</td>
+            <td><input type="number" class="form-control" name="retardos" placeholder="0"value={{retardos}} max="80" min="0" required></td>
+            <td><input type="number" class="form-control" name="inasistencias" placeholder="0" value={{inasistencias}} max="80" min="0"  required></td>
+            <td><input type="number" class="form-control" name="calificacion" placeholder="10/100" value={{calificacion}} max="100" min="10"  required></td>
           </tr>
         {{/each}}
     {{/with}}
