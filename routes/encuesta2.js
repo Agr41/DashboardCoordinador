@@ -97,6 +97,7 @@ const schema = Joi.object({
     .required(),
     valor11: Joi.number()
     .required(),
+    promedio: Joi.number()
 });
 
 
@@ -119,13 +120,16 @@ router.post('/resultados', async function(req, res, next){
   try{
   var value = await schema.validateAsync(req.body);
   console.log(value);
+  console.log(value.valor1);
+
   //if (value = {}){
   //}else{
   regMat(value)
     .then((mensaje)=>{
       //AÑADIR MENSAJE DE ÉXITO DESPUÉS
+      mensaje="Encuesta enviada";
       res.send("<script>alert('"+mensaje+"'); window.location.href='/';</script>");
-      res.redirect('/encuesta2');
+      res.redirect('/encuesta');
       console.log(mensaje);
     })
     .catch((err)=>{
@@ -139,23 +143,24 @@ router.post('/resultados', async function(req, res, next){
   }
   catch (err) { 
     res.send(`<script>alert("Por favor complete todos los campos")
-      window.location.href='/crear_materia';
+      window.location.href='/encuesta';
       </script>`), console.log(err);
-      res.redirect('/ver_materia?nombre='+req.body.nombre+'&ciclo='+req.body.ciclo+'&tipo='+req.body.tipo);}    
+      res.redirect('/encuesta');}    
   //}
 });
 
 async function regMat(datos){
+  let promedio = (datos.valor1 + datos.valor2 + datos.valor3 + datos.valor4 + datos.valor5+ datos.valor6+ datos.valor7+ datos.valor8+ datos.valor9+ datos.valor10 + datos.valor11)/11;
   await client.connect();
   console.log('Connected successfully to server');
   const db = client.db(dbName);
   const collection = db.collection('encuestas');
 
-
  
  
   await collection.insertOne(
     {
+      promedio:promedio,
       docente: datos.docente,
       body: datos.body,
       valor1: datos.valor1,
@@ -168,7 +173,7 @@ async function regMat(datos){
       valor8: datos.valor8,
       valor9: datos.valor9,
       valor10: datos.valor10,
-      valor11: datos.valor11
+      valor11: datos.valor11,
 
     }
     );
