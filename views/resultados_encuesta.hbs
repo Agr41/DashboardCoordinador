@@ -1,0 +1,145 @@
+<div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      {{> header}}
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <div class="row">
+            <div class="col-sm-6 col-lg-6">
+              <ul>
+                {{#each datos}}
+                <li>Materia: {{this.nombre}}</li>
+                <li>Profesor: {{this.docente}}</li>
+                <li>Periodo: {{this.fecha_inicio}} - {{this.fecha_fin}}</li>
+                {{/each}}
+              </ul>
+            </div>
+            <div class="col-sm-6 col-lg-6">
+              <ul>
+                {{#each datos}}
+                <li>Horario: {{hora_inicio}} - {{hora_fin}}</li>
+                <li>Ciclo: {{this.ciclo}}</li>
+                <li>Carrera: {{this.carrera}}</li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+          <table class="table table-striped">
+              <thead>
+    <tr>
+      {{!-- <th scope="col">Matrícula</th> --}}
+      <th scope="col">Pregunta</th>
+      <th scope="col">Muy desacuerdo</th>
+      <th scope="col">Algo en desacuerdo</th>
+      <th scope="col">Algo de acuerdo</th>
+      <th scope="col">Muy de acuerdo</th>
+      <th scope="col">Promedio</th>
+    </tr>
+  </thead>
+  <tbody>
+
+          <tr class="table-danger">
+            <th scope="row">Pregunta 1</th>
+            <td>{{pregunta1.uno}}</td>
+            <td>{{pregunta1.dos}}</td>
+            <td>{{pregunta1.tres}}</td>
+            <td>{{pregunta1.cuatro}}</td>
+            <td>{{pregunta1.promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 2</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 3</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 4</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 5</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 6</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 7</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 8</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 9</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 10</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          <tr class="table-danger">
+            <th scope="row">Pregunta 11</th>
+            <td>{{uno}}</td>
+            <td>{{dos}}</td>
+            <td>{{tres}}</td>
+            <td>{{cuatro}}</td>
+            <td>{{promedio}}/4</td>
+          </tr>
+          
+    {{#each encuesta}}
+    {{#with this}}
+    {{/with}}
+    {{/each}}
+    
+  </tbody>
+
+          </table>
+            <div class"col-sm-6 col-lg-6">
+    <h5>Comentarios adicionales:</h5>
+    {{#each encuesta}}
+    {{this.body}}
+    {{/each}}
+  </div>
+        </div>
+      </div>
+     {{> footer}}
+    </div>
