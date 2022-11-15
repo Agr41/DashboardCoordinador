@@ -54,7 +54,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(query, req.user)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('encuesta2', { title: "Materias",docente:req.query.docente});
+            res.render('encuesta2', { title: "Materias",docente:req.query.docente, coordi:req.user.coordi});
           })  
           .catch((err)=>{
               console.log(err);

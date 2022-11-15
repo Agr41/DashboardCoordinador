@@ -1,6 +1,10 @@
 
 <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      {{#if coordi}}
+  {{> header_coordi}}
+  {{else}}
       {{> header}}
+      {{/if}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           <div class="row">

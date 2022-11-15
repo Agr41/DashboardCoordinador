@@ -1,5 +1,13 @@
 <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+  {{#if coordi}}
+  {{>header_coordi}}
+  {{else}}
+      {{#if coordi}}
+  {{> header_coordi}}
+  {{else}}
       {{> header}}
+      {{/if}}
+      {{/if}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           

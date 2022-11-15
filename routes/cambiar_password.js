@@ -45,7 +45,7 @@ passport.deserializeUser(
   }, function(req, res, next) {
     detalleUsu(req.user.username)
     .then((dato)=>{
-      res.render('cambiar_password', { title: "Cambiar contraseña"});
+      res.render('cambiar_password', { title: "Cambiar contraseña", coordi:req.user.coordi});
     })  
     .catch((err)=>{
         console.log(err);

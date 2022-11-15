@@ -37,7 +37,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(req.query.materia, req.query.ciclo, req.query.tipo)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('resultados_encuesta', { title: "Ver calificaciones", datos:0});
+            res.render('resultados_encuesta', { title: "Ver calificaciones", datos:0, coordi:req.user.coordi});
           })  
           .catch((err)=>{
               console.log(err);

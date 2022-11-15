@@ -69,7 +69,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(req.user)
           .then((dato)=>{
             console.log(dato.promedio)
-            res.render('index', { title: "Menú Principal", isc:dato.isc, im:dato.im, isa:dato.isa,iis:dato.iis});
+            res.render('index', { title: "Menú Principal", isc:dato.isc, im:dato.im, isa:dato.isa,iis:dato.iis, coordi:req.user.coordi});
           })  
           .catch((err)=>{
               console.log(err);

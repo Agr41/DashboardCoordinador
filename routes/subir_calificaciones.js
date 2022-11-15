@@ -64,7 +64,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(req.query.materia, req.query.ciclo, req.query.tipo)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('subir_calificaciones', { title: "Subir calificaciones", nombre:req.query.materia, datos:dato.arregloMat});
+            res.render('subir_calificaciones', { title: "Subir calificaciones", nombre:req.query.materia, datos:dato.arregloMat, coordi:req.user.coordi});
           })  
           .catch((err)=>{
               console.log(err);
