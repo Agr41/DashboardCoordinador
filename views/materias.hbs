@@ -1,9 +1,5 @@
 <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-      {{#if coordi}}
-  {{> header_coordi}}
-  {{else}}
       {{> header}}
-      {{/if}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           <div class="row">
@@ -21,10 +17,12 @@
                       <li>Tipo: {{this.tipo}}</li>
                     </ul>
                   </p>
-                  {{#unless alumno}}
+                  {{#if alumno}}
+                  aluih
+                  {{else}}
                   <a  {{#if sent}} class="btn btn-secondary disabled" {{else}} class="btn btn-success" href="/subir_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}"{{/if}}>Subir</a>
                   <a {{#if sent}} href="/editar_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success"{{else}} class="btn btn-secondary disabled"{{/if}} >Editar</a>
-                  {{/unless}}
+                  {{/if}}
                   <a href="/ver_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success">Ver</a>
                 </div>
               </div>

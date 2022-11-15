@@ -109,6 +109,17 @@ passport.deserializeUser(
           active:datos.active
         }}, {upsert:true}
       );
+      await db.collection('usuarios').updateOne(
+        {
+          username: 'a'+datos.matricula+'@halcones.ual.mx',
+        },
+        {$set:{
+          username: 'a'+datos.matricula+'@halcones.ual.mx',
+          nombre:datos.nombre,
+          active:datos.active,
+          carrera:datos.carrera,
+        }}, {upsert:true}
+      );
       console.log(datos.usuario); 
   }
 

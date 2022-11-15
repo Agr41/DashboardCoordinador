@@ -59,6 +59,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(query, req.user)
           .then((dato)=>{
             console.log(dato.arregloMat)
+            console.log(req.user.alumno)
             res.render('materias', { title: "Materias", materias: dato.arregloMat, alumno:req.user.alumno,coordi:req.user.coordi});
           })  
           .catch((err)=>{

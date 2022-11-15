@@ -12,11 +12,19 @@ passport.deserializeUser(
       done(err, user);});
 });
 
-async function detalleUsu(){
+async function detalleUsu(id){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('alumnos');
-      let arregloAlu = await collection.aggregate([{$match:{active:true}}]).sort({nombre: 1}).toArray();
+
+      let arregloAlu
+      if (id===true){
+        arregloAlu = await collection.aggregate([{$match:{}}]).sort({nombre: 1}).toArray();
+      }
+      else{
+        arregloAlu = await collection.aggregate([{$match:{active:true}}]).sort({nombre: 1}).toArray();
+      }
+      
       
       
       var dato = {arregloAlu}
@@ -34,9 +42,9 @@ router.get('/',(req, res, next) => {
 }, function(req, res, next) {
 
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
-          detalleUsu()
+          detalleUsu(req.user.root)
           .then((dato)=>{
-            res.render('ver_alumnos', { title: "Ver alumnos", datos:dato.arregloAlu, coordi:req.user.coordi});
+            res.render('ver_alumnos', { title: "Ver alumnos", datos:dato.arregloAlu, coordi:req.user.coordi, sudo:req.user.root});
           })  
           .catch((err)=>{
               console.log(err);
@@ -81,6 +89,37 @@ router.post('/deshabilitar', async function(req, res, next){
   //}
 });
 
+router.post('/habilitar', async function(req, res, next){
+  try{
+  var value = req.body.alumno
+  console.log(value);
+  //if (value = {}){
+  //}else{
+  habUser(value)
+    .then(()=>{
+      //AÑADIR MENSAJE DE ÉXITO DESPUÉS
+      res.send(`<script>alert("Usuario habilitado")
+      window.location.href='/ver_alumnos';
+      </script>`);
+      console.log("Usuario habilitado");
+    })
+    .catch((err)=>{
+      
+      console.log(err);
+      
+    })
+    .finally(()=>{
+      client.close()
+    })
+  }
+  catch (err) { 
+    res.send(`<script>alert("Hubo algún error")
+      window.location.href='/ver_alumnos';
+      </script>`), console.log(err); 
+    }    
+  //}
+});
+
 async function regUser(datos){
   await client.connect();
   console.log('Connected successfully to server');
@@ -90,6 +129,25 @@ async function regUser(datos){
     active:false
   }}
     );
+    await db.collection('usuarios').updateOne({nombre:datos},{$set:{
+      active:false
+    }}
+      );
+    console.log(datos); 
+}
+async function habUser(datos){
+  await client.connect();
+  console.log('Connected successfully to server');
+  const db = client.db(dbName);
+  const collection = db.collection('usuarios');
+  await collection.updateOne({nombre:datos},{$set:{
+    active:true
+  }}
+    );
+    await db.collection('alumnos').updateOne({nombre:datos},{$set:{
+      active:true
+    }}
+      );
     console.log(datos); 
 }
 

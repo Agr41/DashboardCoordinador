@@ -6,6 +6,10 @@
       {{/if}}
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
+          {{#if alumno}}
+            USTED NO TIENE PERMITIDO VER ESTA PÁGINA
+            <a href="/">REGRESAR A LA PÁGINA PRINCIPAL</a>
+          {{else}}
           <form action="/subir_calificaciones/subir" method="post">
         
             <div class="body flex-grow-1 px-3">
@@ -66,6 +70,7 @@
         <button class="btn btn-primary" type="submit">Guardar cambios</button>
       </div>
           </form>
+          {{/if}}
         </div>
       </div>
      {{> footer}}

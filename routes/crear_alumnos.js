@@ -120,6 +120,7 @@ passport.deserializeUser(
           root:false,
           coordi:false,
           maestro:false,
+          alumno:true,
           carrera:datos.carrera,
           password:"$2b$10$H0fKTDU2KCmgXbGE1km4pe8tmiyVJpbpPLhYs8Qi9vEf/BHAU4G1."
         }}, {upsert:true}

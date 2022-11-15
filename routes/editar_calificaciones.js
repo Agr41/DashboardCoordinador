@@ -65,7 +65,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(req.query.materia, req.query.ciclo, req.query.tipo)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('editar_calificaciones', { title: "Editar calificaciones", datos:dato.arregloMat, coordi:req.user.coordi});
+            res.render('editar_calificaciones', { title: "Editar calificaciones", datos:dato.arregloMat, coordi:req.user.coordi, alumno:req.user.alumno});
           })  
           .catch((err)=>{
               console.log(err);
