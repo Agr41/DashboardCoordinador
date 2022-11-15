@@ -21,7 +21,13 @@ async function detalleUsu(id, user){
         arregloMat = await collection.aggregate([{$match:{$or:[{carrera:id},{docente:id}]}}]).toArray();
       }
       else{
-        arregloMat = await collection.aggregate([{$match:{docente:user.nombre,carrera:id}}]).toArray();
+        if(user.maestro){
+          arregloMat = await collection.aggregate([{$match:{docente:user.nombre,carrera:id}}]).toArray();
+        }
+        else{
+          arregloMat = await collection.aggregate([{$match:{alumnos:{$elemMatch: {nombre:user.nombre}},carrera:id}}]).toArray();
+        }
+        
       }
       
       
@@ -53,7 +59,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(query, req.user)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('materias', { title: "Materias", materias: dato.arregloMat});
+            res.render('materias', { title: "Materias", materias: dato.arregloMat, alumno:req.user.alumno});
           })  
           .catch((err)=>{
               console.log(err);

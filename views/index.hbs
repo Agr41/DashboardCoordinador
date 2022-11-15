@@ -3,7 +3,9 @@
       <div class="body flex-grow-1 px-3">
         <div class="container-lg">
           <div class="row">
+            {{#if isc}}
             <div class="col-sm-6 col-lg-3">
+              
               <div class="card" style="width: 16rem;">
                 <img src="/img/ISC-Portal.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -12,8 +14,12 @@
                   <a href="/materias?materia=ISC" class="btn btn-success stretched-link">Ver materias</a>
                 </div>
               </div>
+              
             </div>
+            {{/if}}
+            {{#if im}}
             <div class="col-sm-6 col-lg-3">
+              
               <div class="card" style="width: 16rem;">
                 <img src="/img/IM-Portal.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -22,8 +28,12 @@
                   <a href="/materias?materia=IM" class="btn btn-success stretched-link">Ver materias</a>
                 </div>
               </div>
+              
             </div>
+            {{/if}}
+            {{#if isa}}
             <div class="col-sm-6 col-lg-3">
+              
               <div class="card" style="width: 16rem;">
                 <img src="/img/ISA-Portal.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -32,8 +42,12 @@
                   <a href="/materias?materia=ISA" class="btn btn-success stretched-link">Ver materias</a>
                 </div>
               </div>
+              
             </div>
+            {{/if}}
+            {{#if iis}}
             <div class="col-sm-6 col-lg-3">
+              
               <div class="card" style="width: 16rem;">
                 <img src="/img/IIS-Portal.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -42,7 +56,9 @@
                   <a href="/materias?materia=IIS" class="btn btn-success stretched-link">Ver materias</a>
                 </div>
               </div>
+              
             </div>
+            {{/if}}
             <!-- /.col-->
           </div>
           <!-- /.row-->

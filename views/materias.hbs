@@ -17,8 +17,10 @@
                       <li>Tipo: {{this.tipo}}</li>
                     </ul>
                   </p>
+                  {{#unless alumno}}
                   <a  {{#if sent}} class="btn btn-secondary disabled" {{else}} class="btn btn-success" href="/subir_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}"{{/if}}>Subir</a>
                   <a {{#if sent}} href="/editar_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success"{{else}} class="btn btn-secondary disabled"{{/if}} >Editar</a>
+                  {{/unless}}
                   <a href="/ver_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success">Ver</a>
                 </div>
               </div>
