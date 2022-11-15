@@ -133,7 +133,7 @@ if (tipoDato !="string"){
        "calificacion":datos.calificacion[i],
        "inasistencias":datos.inasistencias[i],
        "retardos":datos.retardos[i],
-       "reprobado":reprobado
+       "reprobado":reprobado,
     }
  }
 }
@@ -156,6 +156,7 @@ else{
   const collection = db.collection('materias');
   await collection.updateOne({nombre:datos.materia, tipo:datos.tipo, ciclo:datos.ciclo},{$set:{
     alumnos:valuesArr,
+    calificacionesOriginal:valuesArr,
     sent:true,
     comentarios:datos.comentarios
   }},
