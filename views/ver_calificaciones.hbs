@@ -37,29 +37,41 @@
     </tr>
   </thead>
   <tbody>
-    {{#each datos}}
-      {{#with this}}
-        {{#each alumnos}}
-          <tr {{#if reprobado}}class="table-danger"{{/if}}>
+    {{#if alumno}}
+      <tr {{#if datosAlu.reprobado}}class="table-danger"{{/if}}>
             {{!-- <th scope="row">{{matricula}}</th> --}}
-            <td>{{nombre}}</td>
-            <td>{{retardos}}</td>
-            <td>{{inasistencias}}</td>
-            <td>{{calificacion}}/100</td>
+            <td>{{datosAlu.nombre}}</td>
+            <td>{{datosAlu.retardos}}</td>
+            <td>{{datosAlu.inasistencias}}</td>
+            <td>{{datosAlu.calificacion}}/100</td>
           </tr>
-        {{/each}}
-    {{/with}}
-    {{/each}}
+    {{else}}
+      {{#each datos}}
+        {{#with this}}
+          {{#each alumnos}}
+            <tr {{#if reprobado}}class="table-danger"{{/if}}>
+              {{!-- <th scope="row">{{matricula}}</th> --}}
+              <td>{{nombre}}</td>
+              <td>{{retardos}}</td>
+              <td>{{inasistencias}}</td>
+              <td>{{calificacion}}/100</td>
+            </tr>
+          {{/each}}
+      {{/with}}
+      {{/each}}
+    {{/if}}
     
   </tbody>
 
           </table>
+          {{#unless alumno}}
             <div class"col-sm-6 col-lg-6">
     <h5>Comentarios adicionales:</h5>
     {{#each datos}}
     {{this.comentarios}}
     {{/each}}
   </div>
+  {{/unless}}
         </div>
       </div>
      {{> footer}}

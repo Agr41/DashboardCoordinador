@@ -12,14 +12,20 @@ passport.deserializeUser(
       done(err, user);});
 });
 
-async function detalleUsu(nombre, ciclo, tipo){
+async function detalleUsu(nombre, ciclo, tipo, usuario){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('materias');
       let arregloMat = await collection.aggregate([{$match:{nombre:nombre, ciclo:ciclo, tipo:tipo}}]).toArray();
+      let objetoAlu
+      arregloMat[0].alumnos.forEach(element => {
+        if (element.nombre==usuario){
+          console.log(element)
+          objetoAlu=element
+        }
+      });
       
-      
-      var dato = {arregloMat}
+      var dato = {arregloMat, objetoAlu}
       console.log(dato)
       return dato;
   };
@@ -34,10 +40,10 @@ router.get('/',(req, res, next) => {
 }, function(req, res, next) {
 
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
-          detalleUsu(req.query.materia, req.query.ciclo, req.query.tipo)
+          detalleUsu(req.query.materia, req.query.ciclo, req.query.tipo, req.user.nombre)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('ver_calificaciones', { title: "Ver calificaciones", datos:dato.arregloMat, coordi:req.user.coordi});
+            res.render('ver_calificaciones', { title: "Ver calificaciones", datos:dato.arregloMat,datosAlu:dato.objetoAlu, coordi:req.user.coordi, alumno:req.user.alumno});
           })  
           .catch((err)=>{
               console.log(err);
