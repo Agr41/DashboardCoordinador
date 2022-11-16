@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      {{#if coordi}}
+  {{> header_coordi}}
+  {{else}}
+      {{> header}}
+      {{/if}}
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+       <div class="card p-3 border border-3 border-success" >
+            <div class="card border border-2 border-success" style="width: 16rem; height:auto;">
+  <div class="card-body">
+    <div class="d-flex flex-column">
+      
+  <h5 class="p-1 text-center fw-bold">Docente:</h5>
+  <h5 class="p-1 text-center fw-bold"> {{docente}}</div>
+  
+</div>
+
+
+  </div>
+<img src="/img/logo-ual.png" class="rounded mx-auto  float-end" alt="...">
+</div>
+
+       </div>
+
+<br>
+
+         <div class="card p-4 border border-3 border-success" >
+ <div class="container">
+      <div class="row">
+        <div class="col">
+              <div class="card border border-2 border-success" style="width: 12rem; height:auto;">
+  <div class="card-body">
+    <div class="d-flex flex-column">
+  <h5 class="p-1 text-center fw-bold">1</h5>
+  <div class="p-1 text-center fw-bold">Muy De Acuerdo</div>
+</div>
+  </div>
+</div>
+      
+        </div>
+        <div class="col">
+
+                 <div class="card border border-2 border-success" style="width: 12rem; height:auto;">
+  <div class="card-body">
+    <div class="d-flex flex-column">
+  <h5 class="p-1 text-center fw-bold">2</h5>
+  <div class="p-1 text-center fw-bold">De Acuerdo</div>
+</div>
+  </div>
+</div>
+            
+            </div>
+        <div class="col">
+          <div class="card border border-2 border-success" style="width: 12rem; height:auto;">
+  <div class="card-body">
+    <div class="d-flex flex-column">
+  <h5 class="p-1 text-center fw-bold">3</h5>
+  <div class="p-1 text-center fw-bold">En Desacuerdo</div>
+</div>
+  </div>
+</div>
+            
+            </div>
+        <div class="col">
+             <div class="card border border-2 border-success" style="width: 12rem; height:auto;">
+  <div class="card-body">
+    <div class="d-flex flex-column">
+  <h5 class="p-1 text-center fw-bold">4</h5>
+  <div class="p-1 text-center fw-bold">Muy Desacuerdo</div>
+</div>
+  </div>
+</div>
+            
+            </div>  
+      </div>
+    </div>
+    <br>
+    <div class="p-1 text-center fw-bold">Evaluacion De Desempeño Del Docente</div>
+     <br>
+    <div class="container">
+<div class="container">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-5"></div>
+        <div class="col-1">1</div>
+        <div class="col-1">2</div>
+        <div class="col-1">3</div>
+        <div class="col-1">4</div>
+
+    </div>
+</div>
+<div class="container">
+<div class="container mb-2">
+    
+    <div class="row">
+
+        <div class="col-1">1</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success" >Preguntas</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question1"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question1"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question1"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question1"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">2</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question2"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question2"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question2"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question2"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">3</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question3"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question3"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question3"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question3"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">4</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question4"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question4"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question4"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question4"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">5</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question5"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question5"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question5"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question5"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">6</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question6"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question6"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question6"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question6"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">7</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question7"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question7"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question7"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question7"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">8</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question8"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question8"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question8"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question8"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">9</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question9"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question9"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question9"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question9"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">10</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question10"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question10"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question10"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question10"></div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container mb-2">
+    <div class="row">
+
+        <div class="col-1">11</div>
+        <div class="col-6 col-md-6  rounded border border-2 border-success ">¿?</div>
+        <div class="d-md-none col-8"></div>
+<div  class="col-4 col-md-4">
+    <div class="row">
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question11"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question11"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question11"></div>
+    <div class="col-3"><input type="radio"style="list-style:none;" name="question11"></div>
+    </div>
+</div>
+    </div>
+</div>
+<br>
+<label class="form-label p-1  fw-bold">Comentarios</label>
+ <textarea class="form-control border border-2 border-success"  rows="3"></textarea>
+<br>
+
+                            <div class="form-group position-relative">
+                            <button type="submit" class="position-absolute top-0 start-50 translate-middle-x btn  btn-success col-6 col-form-label"
+                            id="sendMessageButton">Enviar encuesta</button>
+                            </div>
+
+</div>
+
+         </div>   
+       
+   
+{{> footer}}
+
+
+<script src="js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</body>
+</html>
