@@ -44,7 +44,7 @@ router.get('/',(req, res, next) => {
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
           let query=""
           if (req.query.materia==undefined){
-            query=req.query.docente
+            query=req.query.docente       
           }
           else{
             query=req.query.materia
@@ -72,6 +72,12 @@ router.get('/',(req, res, next) => {
 
 const schema = Joi.object({
     docente: Joi.string()
+    .required(),
+    materia: Joi.string()
+    .required(),
+    ciclo: Joi.string()
+    .required(),
+    tipo: Joi.string()
     .required(),
     body: Joi.string()
     .required(),
@@ -162,6 +168,9 @@ async function regMat(datos){
     {
       promedio:promedio,
       docente: datos.docente,
+      tipo: datos.tipo,
+      ciclo: datos.ciclo,
+      materia: datos.materia,
       body: datos.body,
       valor1: datos.valor1,
       valor2: datos.valor2,
