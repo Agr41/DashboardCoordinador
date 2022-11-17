@@ -15,8 +15,25 @@ passport.deserializeUser(
 async function detalleUsu(nombre, ciclo, tipo){
   await client.connect();
       const db = client.db(dbName);
-      const collection = db.collection('materias');
+      const collection = db.collection('encuestas');
       let arregloMat = await collection.aggregate([{$match:{nombre:nombre, ciclo:ciclo, tipo:tipo}}]).toArray();
+      let conteoPreg1_1 = await collection.aggregate(
+        [
+          {
+            '$match': {
+              //Pregunta
+              'valor1': {
+                //Qué contestaron
+                '$eq': 1
+              }
+            }
+          }, {
+            //Pregunta
+            '$count': 'valor1'
+          }
+        ]
+        );
+
       
       
       var dato = {arregloMat}
