@@ -19,7 +19,7 @@
                   </p>
 
                   {{#if ../alumno}}
-                  <a href="/encuesta2?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}&docente={{this.docente}}" class="btn btn-success">Encuesta</a>
+                  <a href="/encuesta3?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}&docente={{this.docente}}" class="btn btn-success">Encuesta</a>
                   {{else}}
                   <a  {{#if sent}} class="btn btn-secondary disabled" {{else}} class="btn btn-success" href="/subir_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}"{{/if}}>Subir</a>
                   <a {{#if sent}} href="/editar_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success"{{else}} class="btn btn-secondary disabled"{{/if}} >Editar</a>
