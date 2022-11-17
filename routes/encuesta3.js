@@ -54,7 +54,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(query, req.user)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('encuesta3', { title: "Materias",docente:req.query.docente, coordi:req.user.coordi});
+            res.render('encuesta3', { title: "Materias",docente:req.query.docente, coordi:req.user.coordi, materia:req.query.materia, ciclo:req.query.ciclo, tipo:req.query.tipo});
           })  
           .catch((err)=>{
               console.log(err);
@@ -72,6 +72,12 @@ router.get('/',(req, res, next) => {
 
 const schema = Joi.object({
     docente: Joi.string()
+    .required(),
+    materia: Joi.string()
+    .required(),
+    ciclo: Joi.string()
+    .required(),
+    tipo: Joi.string()
     .required(),
     body: Joi.string()
     .required(),
@@ -162,6 +168,9 @@ async function regMat(datos){
     {
       promedio:promedio,
       docente: datos.docente,
+      materia: datos.materia,
+      ciclo: datos.ciclo,
+      tipo: datos.tipo,
       body: datos.body,
       valor1: datos.valor1,
       valor2: datos.valor2,

@@ -29,7 +29,13 @@
     <div class="d-flex flex-column">
       
   <div style="font-size: 15px;" class="p-1  fw-bold">Docente: {{docente}}</div>
+
   <div style="font-size: 15px;" class="p-1  fw-bold">Docente: {{carrera}}</div>
+  {{!-- inputs ocultos con los datos de la materia --}}
+  <input type="hidden" class="form-control" placeholder="Docente" id="docente" name="docente" value="{{docente}}">
+  <input type="hidden" class="form-control" placeholder="Materia" id="materia" name="materia" value="{{materia}}">
+  <input type="hidden" class="form-control" placeholder="Ciclo" id="ciclo" name="ciclo" value="{{ciclo}}">
+  <input type="hidden" class="form-control" placeholder="Tipo" id="tipo" name="tipo" value="{{tipo}}">
   </div>
   
 </div>
