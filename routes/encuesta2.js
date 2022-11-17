@@ -44,8 +44,7 @@ router.get('/',(req, res, next) => {
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
           let query=""
           if (req.query.materia==undefined){
-            query=req.query.docente
-            query=req.query.materia
+            query=req.query.docente       
           }
           else{
             query=req.query.materia
