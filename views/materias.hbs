@@ -5,7 +5,7 @@
           <div class="row">
 
               {{#each materias}}
-          <div class="col-sm-6 col-lg-3">
+          <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
               <div class="card" style="width: 16rem;">
                 {{!-- <img src="/img/IIS-Portal.jpg" class="card-img-top" alt="..."> --}}
                 <div class="card-body">
@@ -23,6 +23,7 @@
                   {{else}}
                   <a  {{#if sent}} class="btn btn-secondary disabled" {{else}} class="btn btn-success" href="/subir_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}"{{/if}}>Subir</a>
                   <a {{#if sent}} href="/editar_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success"{{else}} class="btn btn-secondary disabled"{{/if}} >Editar</a>
+                  <a {{#if sent}} href="/resultados_encuesta?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success"{{else}} class="btn btn-secondary disabled"{{/if}} >Encuesta</a>
                   {{/if}}
                   <a href="/ver_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success">Ver</a>
                 </div>
