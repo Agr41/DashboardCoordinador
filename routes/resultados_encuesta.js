@@ -34,7 +34,7 @@ async function detalleUsu(nombre, ciclo, tipo){
             '$count': 'valor1'
           }
         ]
-        );
+        ).toArray();
         
         let conteoPreg1_2 = await collection.aggregate(
           [
@@ -51,7 +51,7 @@ async function detalleUsu(nombre, ciclo, tipo){
               '$count': 'valor1'
             }
           ]
-          );
+          ).toArray();
         
         let conteoPreg1_3 = await collection.aggregate(
           [
@@ -766,62 +766,12 @@ async function detalleUsu(nombre, ciclo, tipo){
             }
           ]
           );
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-      
-      
-      var dato = {arregloMat}
+          let pregunta1={
+            "uno":conteoPreg1_1[0].valor1,
+            "dos":conteoPreg1_2[0].valor2
+          };
+          console.log(pregunta1)
+      var dato = {arregloMat, pregunta1}
       console.log(dato)
       return dato;
   };
@@ -839,7 +789,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(req.query.materia, req.query.ciclo, req.query.tipo)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('resultados_encuesta', { title: "Ver calificaciones", datos:0, coordi:req.user.coordi});
+            res.render('resultados_encuesta', { title: "Ver calificaciones", datos:0, coordi:req.user.coordi, pregunta1:dato.pregunta1});
           })  
           .catch((err)=>{
               console.log(err);
