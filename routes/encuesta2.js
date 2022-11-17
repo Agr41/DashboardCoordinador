@@ -45,6 +45,7 @@ router.get('/',(req, res, next) => {
           let query=""
           if (req.query.materia==undefined){
             query=req.query.docente
+            query=req.query.materia
           }
           else{
             query=req.query.materia
