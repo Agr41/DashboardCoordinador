@@ -73,6 +73,12 @@ router.get('/',(req, res, next) => {
 const schema = Joi.object({
     docente: Joi.string()
     .required(),
+    materia: Joi.string()
+    .required(),
+    ciclo: Joi.string()
+    .required(),
+    tipo: Joi.string()
+    .required(),
     body: Joi.string()
     .required(),
     valor1: Joi.number()
