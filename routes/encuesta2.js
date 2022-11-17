@@ -168,6 +168,9 @@ async function regMat(datos){
     {
       promedio:promedio,
       docente: datos.docente,
+      tipo: datos.tipo,
+      ciclo: datos.ciclo,
+      materia: datos.materia,
       body: datos.body,
       valor1: datos.valor1,
       valor2: datos.valor2,
