@@ -125,7 +125,7 @@ tipoDato= typeof datos.nombre;
 if (tipoDato !="string"){
   for (var i = 0; i <= datos.nombre.length-1; i++){
     let reprobado = false;
-    if (parseInt(datos.calificacion)<70){
+    if (parseInt(datos.calificacion[i])<70){
       reprobado=true;
     }
     valuesArr[i]={
