@@ -130,7 +130,7 @@ router.post('/resultados', async function(req, res, next){
 
   //if (value = {}){
   //}else{
-  regMat(value)
+  regMat(value, req.user.nombre)
     .then((mensaje)=>{
       //AÑADIR MENSAJE DE ÉXITO DESPUÉS
       mensaje="Encuesta enviada";
@@ -155,7 +155,7 @@ router.post('/resultados', async function(req, res, next){
   //}
 });
 
-async function regMat(datos){
+async function regMat(datos, alumno){
   let promedio = (datos.valor1 + datos.valor2 + datos.valor3 + datos.valor4 + datos.valor5+ datos.valor6+ datos.valor7+ datos.valor8+ datos.valor9+ datos.valor10 + datos.valor11)/11;
   await client.connect();
   console.log('Connected successfully to server');
@@ -186,6 +186,13 @@ async function regMat(datos){
 
     }
     );
+    await db.collection('materias').updateOne({
+        nombre: datos.materia,
+        docente:datos.docente,
+        tipo:datos.tipo,
+        ciclo:datos.ciclo,
+    },{$pull: {  falta_encuesta: alumno }}, {upsert:true}
+      );
  
   
     

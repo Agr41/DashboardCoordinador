@@ -18,6 +18,13 @@ async function detalleUsu(nombre, ciclo, tipo, usuario){
       const collection = db.collection('materias');
       let arregloMat = await collection.aggregate([{$match:{nombre:nombre, ciclo:ciclo, tipo:tipo}}]).toArray();
       let objetoAlu
+      let falta= false
+      arregloMat[0].falta_encuesta.forEach(element => {
+        if (element==usuario){
+          falta=true;
+        }
+      });
+      console.log(falta)
       arregloMat[0].alumnos.forEach(element => {
         if (element.nombre==usuario){
           console.log(element)
@@ -25,7 +32,7 @@ async function detalleUsu(nombre, ciclo, tipo, usuario){
         }
       });
       
-      var dato = {arregloMat, objetoAlu}
+      var dato = {arregloMat, objetoAlu, falta}
       console.log(dato)
       return dato;
   };
@@ -43,7 +50,7 @@ router.get('/',(req, res, next) => {
           detalleUsu(req.query.materia, req.query.ciclo, req.query.tipo, req.user.nombre)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('ver_calificaciones', { title: "Ver calificaciones", datos:dato.arregloMat,datosAlu:dato.objetoAlu, coordi:req.user.coordi, alumno:req.user.alumno});
+            res.render('ver_calificaciones', { title: "Ver calificaciones", datos:dato.arregloMat,datosAlu:dato.objetoAlu, coordi:req.user.coordi, alumno:req.user.alumno, falta:dato.falta});
           })  
           .catch((err)=>{
               console.log(err);
