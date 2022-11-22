@@ -41,93 +41,93 @@
   <tbody>
 
           <tr class="table-danger">
-            <th scope="row">Poner preguntas de verdad en esta sección</th>
+            <th scope="row">Consideras que el docente domina la materia para la comprensión de los contenidos.</th>
             {{!-- Nota: todos los valores deben llevar valor1, valor2 (el número depende del númeor de la pregunta) al final, y hay que ponerles los if, porque si no no muestra el cero --}}
-            <td>{{pregunta1.uno.valor1}}</td>
-            <td>{{pregunta1.dos.valor1}}</td>
-            <td>{{pregunta1.tres.valor1}}</td>
+            <td>{{#if pregunta1.uno.valor1}}{{pregunta1.uno.valor1}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta1.dos.valor1}}{{pregunta1.dos.valor1}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta1.tres.valor1}}{{pregunta1.tres.valor1}}{{else}}0{{/if}}</td>
             <td>{{#if pregunta1.cuatro.valor1}}{{pregunta1.cuatro.valor1}}{{else}}0{{/if}}</td>
             <td>{{pregunta1.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 2</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row">Promovió la realización de actividades académicas (tareas, ejercicios, exposiciones, discuciones, etc.)</th>
+            <td>{{#if pregunta2.uno.valor2}}{{pregunta2.uno.valor2}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta2.dos.valor2}}{{pregunta2.dos.valor2}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta2.tres.valor2}}{{pregunta2.tres.valor2}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta2.cuatro.valor2}}{{pregunta2.cuatro.valor2}}{{else}}0{{/if}}</td>
+            <td>{{pregunta2.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 3</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row">Relacionó los temas de su clase con otras materias que son antecedentes y además con otras materias del mismo semestre y el aprendizaje se complementó.</th>
+            <td>{{#if pregunta3.uno.valor3}}{{pregunta3.uno.valor3}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta3.dos.valor3}}{{pregunta3.dos.valor3}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta3.tres.valor3}}{{pregunta3.tres.valor3}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta3.cuatro.valor3}}{{pregunta3.cuatro.valor3}}{{else}}0{{/if}}</td>
+            <td>{{pregunta3.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 4</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row">Durante el curso el profesor revisó las tareas o trabajos escolares y te dio retroalimentación sobre tu desempeño.</th>
+            <td>{{#if pregunta4.uno.valor4}}{{pregunta4.uno.valor4}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta4.dos.valor4}}{{pregunta4.dos.valor4}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta4.tres.valor4}}{{pregunta4.tres.valor4}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta4.cuatro.valor4}}{{pregunta4.cuatro.valor4}}{{else}}0{{/if}}</td>
+            <td>{{pregunta4.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 5</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row"></th>En clase se emplearon recursos y medios educativos para un mejor logro del aprendizaje.
+            <td>{{#if pregunta5.uno.valor5}}{{pregunta5.uno.valor5}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta5.dos.valor5}}{{pregunta5.dos.valor5}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta5.tres.valor5}}{{pregunta5.tres.valor5}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta5.cuatro.valor5}}{{pregunta5.cuatro.valor5}}{{else}}0{{/if}}</td>
+            <td>{{pregunta5.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 6</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row"></th>El maestro estuvo orientando tu aprendizaje durante todo el curso.
+            <td>{{#if pregunta6.uno.valor6}}{{pregunta6.uno.valor6}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta6.dos.valor6}}{{pregunta6.dos.valor6}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta6.tres.valor6}}{{pregunta6.tres.valor6}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta6.cuatro.valor6}}{{pregunta6.cuatro.valor6}}{{else}}0{{/if}}</td>
+            <td>{{pregunta6.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 7</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row">Se explicó la forma de evaluación del curso al inicio del mismo.</th>
+            <td>{{#if pregunta7.uno.valor7}}{{pregunta7.uno.valor7}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta7.dos.valor7}}{{pregunta7.dos.valor7}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta7.tres.valor7}}{{pregunta7.tres.valor7}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta7.cuatro.valor7}}{{pregunta7.cuatro.valor7}}{{else}}0{{/if}}</td>
+            <td>{{pregunta7.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 8</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row">Se tomaron en consideración las actitudes (responsabilidad, colaboración, respeto, etc.) para la evaluación final.</th>
+            <td>{{#if pregunta8.uno.valor8}}{{pregunta8.uno.valor8}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta8.dos.valor8}}{{pregunta8.dos.valor8}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta8.tres.valor8}}{{pregunta8.tres.valor8}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta8.cuatro.valor8}}{{pregunta8.cuatro.valor8}}{{else}}0{{/if}}</td>
+            <td>{{pregunta8.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 9</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row">Promovió aprendizajes del curso para la vida laboral o cotidiana.</th>
+            <td>{{#if pregunta9.uno.valor9}}{{pregunta9.uno.valor9}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta9.dos.valor9}}{{pregunta9.dos.valor9}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta9.tres.valor9}}{{pregunta9.tres.valor9}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta9.cuatro.valor9}}{{pregunta9.cuatro.valor9}}{{else}}0{{/if}}</td>
+            <td>{{pregunta9.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 10</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row">Mejoraste el nivel de tu aprendizaje de la asignatura en este curso.</th>
+            <td>{{#if pregunta10.uno.valor10}}{{pregunta10.uno.valor10}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta10.dos.valor10}}{{pregunta10.dos.valor10}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta10.tres.valor10}}{{pregunta10.tres.valor10}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta10.cuatro.valor10}}{{pregunta10.cuatro.valor10}}{{else}}0{{/if}}</td>
+            <td>{{pregunta10.promedio}}/4</td>
           </tr>
           <tr class="table-danger">
-            <th scope="row">Pregunta 11</th>
-            <td>{{uno}}</td>
-            <td>{{dos}}</td>
-            <td>{{tres}}</td>
-            <td>{{cuatro}}</td>
-            <td>{{promedio}}/4</td>
+            <th scope="row">Promovió un buen ejemplo con su presentación personal, asi como la putualidad y la asistencia a las clases.</th>
+            <td>{{#if pregunta11.uno.valor11}}{{pregunta11.uno.valor11}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta11.dos.valor11}}{{pregunta11.dos.valor11}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta11.tres.valor11}}{{pregunta11.tres.valor11}}{{else}}0{{/if}}</td>
+            <td>{{#if pregunta11.cuatro.valor11}}{{pregunta11.cuatro.valor11}}{{else}}0{{/if}}</td>
+            <td>{{pregunta11.promedio}}/4</td>
           </tr>
           
     {{#each encuesta}}
@@ -141,7 +141,9 @@
             <div class"col-sm-6 col-lg-6">
     <h5>Comentarios adicionales:</h5>
     {{#each encuesta}}
+    <li> comentarios
     {{this.body}}
+    </li>
     {{/each}}
   </div>
         </div>
