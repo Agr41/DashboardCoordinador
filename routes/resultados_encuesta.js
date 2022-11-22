@@ -17,12 +17,12 @@ async function detalleUsu(nombre, ciclo, tipo){
       const db = client.db(dbName);
       const collection = db.collection('encuestas');
       let arregloMat = await db.collection('materias').aggregate([{$match:{nombre:nombre, ciclo:ciclo, tipo:tipo}}]).toArray();
-
       //-------------------------------------------------------1 Quest-------------
       let conteoPreg1_1 = await collection.aggregate(
         [
           {
             '$match': {
+              'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
               //Pregunta
               'valor1': {
                 //Qué contestaron
