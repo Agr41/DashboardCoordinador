@@ -37,7 +37,18 @@
           <h5>Detalles</h5>
           <div class="col-md-6">
             <label>Nombre de la materia</label>
-            <input type="text" class="form-control" name="nombre" placeholder="Nombre de la materia" required>
+                                              <select  class="form-select" name="nombre" id="nombre">
+
+                                          {{#each planes}}
+                                          {{#each this.materias}}
+                                    <option value="{{this}}">{{this}} {{../this.carrera}}</option>
+
+            
+                                       {{/each}}
+
+                                       {{/each}}
+                                                                      </select>
+
           </div>
           <div class="col-md-6">
           <label>Docente</label>
@@ -60,7 +71,22 @@
           </div>
           <div class="col-md-6">
             <label>Ciclo</label>
-            <input class="form-control" type="text" placeholder="2022S2" name="ciclo" required>
+
+                                     <select  class="form-select" name="ciclo" id="ciclo">
+                                    <option value="2020S1">2020S1</option>
+                                    <option value="2020S2">2020S2</option>
+                                    <option value="2021S1">2021S1</option>
+                                    <option value="2021S2">2025S2</option>
+                                    <option value="2022S1">2022S1</option>
+                                    <option value="2022S2">2022S2</option>
+                                    <option value="2023S1">2023S1</option>
+                                    <option value="2023S2">2023S2</option>
+                                    <option value="2024S1">2024S1</option>
+                                    <option value="2024S2">2024S2</option>
+                                    <option value="Otro">Otro</option>
+
+                                        </select> 
+
           </div>
           <hr>
           <h5>Duración</h5>
