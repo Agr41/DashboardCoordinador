@@ -86,7 +86,7 @@
 
           </div>
           <div class="col-12">
-            <button class="btn btn-success" type="submit">Crear materia</button>
+            <button class="btn btn-success" id="checkBtn" type="submit">Crear materia</button>
           </div>
           </form>
           {{else}}
@@ -117,7 +117,20 @@ $(document).ready(function () {
     });
 });
 </script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#checkBtn').click(function() {
+      checked = $("input[type=checkbox]:checked").length;
 
+      if(!checked) {
+        alert("Seleccione al menos un alumno.");
+        return false;
+      }
+
+    });
+});
+
+</script>
 
 
 

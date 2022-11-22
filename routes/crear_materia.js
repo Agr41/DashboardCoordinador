@@ -191,7 +191,8 @@ let d2 = new Date(date2);
       fecha_fin:datos.f_final,
       hora_inicio:datos.h_inicio,
       hora_fin:datos.h_final,
-      alumnos:valuesArr
+      alumnos:valuesArr,
+      falta_encuesta:datos.nomAlu
 
     }}, {upsert:true}
     );

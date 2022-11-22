@@ -38,6 +38,16 @@
   </thead>
   <tbody>
     {{#if alumno}}
+    {{#if falta}}
+      </tbody>
+
+          </table>
+    <b>POR FAVOR CONTESTE LA EVALUACIÓN DE MAESTROS PARA VER SU CALIFICACIÓN</b>
+    <br>
+    {{#each datos}}
+                      <a href="/encuesta3?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}&docente={{this.docente}}" class="btn btn-success" >Contestar encuesta</a>
+    {{/each}}
+    {{else}}
       <tr {{#if datosAlu.reprobado}}class="table-danger"{{/if}}>
             {{!-- <th scope="row">{{matricula}}</th> --}}
             <td>{{datosAlu.nombre}}</td>
@@ -45,6 +55,7 @@
             <td>{{datosAlu.inasistencias}}</td>
             <td>{{datosAlu.calificacion}}/100</td>
           </tr>
+          {{/if}}
     {{else}}
       {{#each datos}}
         {{#with this}}

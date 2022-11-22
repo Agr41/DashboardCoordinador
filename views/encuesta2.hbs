@@ -263,7 +263,7 @@ id="body" name="body" ></textarea>
 
                             <div class="form-group position-relative">
                             <button type="submit" class="position-absolute top-0 start-50 translate-middle-x btn btn-outline-primary col-6 col-form-label"
-                            id="sendMessageButton">Enviar encuesta</button>
+                            id="sendMessageButton" disabled>Enviar encuesta</button>
                             </div>
 
                             </form>
@@ -275,3 +275,11 @@ id="body" name="body" ></textarea>
       </div>
      {{> footer}}
     </div>
+<script>
+$(document).ready(function () {
+    $(".form-check-input").change(function () {
+      $("select").prop('disabled', false);
+      $("button").prop('disabled', false);
+    });
+});
+</script>
