@@ -49,12 +49,22 @@ async function detalleUsu(id){
       let aluISA = await db.collection('alumnos').aggregate([{$match:{$and:[{"active":true},{"carrera":"ISA"}]}}]).sort({nombre: 1}).toArray();
       let aluIIS = await db.collection('alumnos').aggregate([{$match:{$and:[{"active":true},{"carrera":"IIS"}]}}]).sort({nombre: 1}).toArray();
       let tipoUsu = await db.collection('usuarios').aggregate([{$match:{username:id}}]).toArray();
+
+      const collection2 = db.collection('planes');
+      let planesArreglo=[];
+      planesArreglo = await collection2.aggregate([{$match:{}}]).toArray();
+
+
       
-      
-      var dato = {arregloMat,aluISC,aluIM,aluISA,aluIIS,tipoUsu}
+      var dato = {arregloMat,aluISC,aluIM,aluISA,aluIIS,tipoUsu,planesArreglo}
       console.log(dato)
       return dato;
   };
+
+
+  
+  /* GET home 
+
 
 /* GET home page. */
 router.get('/',(req, res, next) => {
@@ -68,7 +78,7 @@ router.get('/',(req, res, next) => {
           //res.render('index', { title: "Menú Principal", student_id:req.user.student_id});
           detalleUsu(req.user.username)
           .then((dato)=>{
-            res.render('crear_materia', { title: "Crear materia", maestro: dato.arregloMat, aluISC:dato.aluISC, aluIM:dato.aluIM, aluISA:dato.aluISA, aluIIS:dato.aluIIS, coordi:dato.tipoUsu[0].coordi});
+            res.render('crear_materia', { title: "Crear materia", maestro: dato.arregloMat, aluISC:dato.aluISC, aluIM:dato.aluIM, aluISA:dato.aluISA, aluIIS:dato.aluIIS, coordi:dato.tipoUsu[0].coordi, planes:dato.planesArreglo});
           })  
           .catch((err)=>{
               console.log(err);
