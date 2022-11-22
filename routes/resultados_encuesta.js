@@ -4,7 +4,7 @@ var passport = require('passport');
 var {client,dbName} = require('../db/mongo');
 
 passport.deserializeUser(
-  async function(id, done) {
+  async function(id, done){
     await client.connect();
     const db = client.db(dbName);
     const collection = db.collection('usuarios');
@@ -17,7 +17,7 @@ async function detalleUsu(nombre, ciclo, tipo){
       const db = client.db(dbName);
       const collection = db.collection('encuestas');
       let arregloMat = await collection.aggregate([{$match:{nombre:nombre, ciclo:ciclo, tipo:tipo}}]).toArray();
-
+      console.log(arregloMat)
       //-------------------------------------------------------1 Quest-------------
       let conteoPreg1_1 = await collection.aggregate(
         [
@@ -836,7 +836,7 @@ async function detalleUsu(nombre, ciclo, tipo){
         
       console.log(pregunta1)
       var dato = {arregloMat, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, pregunta6, pregunta7, pregunta8, pregunta9, pregunta10, pregunta11}
-      console.log(dato)
+      
       return dato;
   };
 
