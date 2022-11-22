@@ -80,7 +80,7 @@ const schema = Joi.object({
     tipo: Joi.string()
     .required(),
     body: Joi.string()
-    .required(),
+    .min(0),
     valor1: Joi.number()
     .required(),
     valor2: Joi.number()

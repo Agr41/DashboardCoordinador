@@ -335,7 +335,7 @@
 
                             <div class="form-group position-relative">
                             <button type="submit" class="btn  btn-success col-12 col-form-label"
-                            id="sendMessageButton"><strong > Enviar encuesta</strong></button>
+                            id="sendMessageButton" disabled><strong > Enviar encuesta</strong></button>
                             </div>
 
 </div>
@@ -352,3 +352,40 @@
 <script src="js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 {{> footer}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    let cont=0;
+    $(":radio").change(function () {
+        console.log(cont)
+        cont++
+        if ($('input:radio[name=valor1]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor2]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor3]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor4]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor5]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor6]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor7]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor8]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor9]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor10]:checked').val()!=undefined
+        &&
+        $('input:radio[name=valor11]:checked').val()!=undefined
+
+        ){
+            $("button").prop('disabled', false);
+        }
+      
+      
+    });
+});
+</script>
