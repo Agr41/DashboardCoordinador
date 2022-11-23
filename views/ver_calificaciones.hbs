@@ -37,8 +37,13 @@
     </tr>
   </thead>
   <tbody>
+
+
     {{#if alumno}}
     {{#if falta}}
+    {{#if sent}}
+
+
       </tbody>
 
           </table>
@@ -47,6 +52,13 @@
     {{#each datos}}
                       <a href="/encuesta3?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}&docente={{this.docente}}" class="btn btn-success" >Contestar encuesta</a>
     {{/each}}
+    {{else}}
+    </tbody>
+
+          </table>
+    <b>NO SE HAN ENVIADO CALIFICACIONES PARA ESTA MATERIA</b>
+    <br>
+    {{/if}}
     {{else}}
       <tr {{#if datosAlu.reprobado}}class="table-danger"{{/if}}>
             {{!-- <th scope="row">{{matricula}}</th> --}}

@@ -50,7 +50,14 @@ router.get('/',(req, res, next) => {
           detalleUsu(req.query.materia, req.query.ciclo, req.query.tipo, req.user.nombre)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('ver_calificaciones', { title: "Ver calificaciones", datos:dato.arregloMat,datosAlu:dato.objetoAlu, coordi:req.user.coordi, alumno:req.user.alumno, falta:dato.falta});
+            let falta;
+            if (dato.arregloMat[0].tipo=="Ordinario" || dato.arregloMat[0].tipo=="Recurso"){
+                falta=dato.falta
+            }
+            else{
+                falta=false
+            }
+            res.render('ver_calificaciones', { title: "Ver calificaciones", datos:dato.arregloMat,datosAlu:dato.objetoAlu, coordi:req.user.coordi, alumno:req.user.alumno, falta:falta, sent:dato.arregloMat[0].sent});
           })  
           .catch((err)=>{
               console.log(err);

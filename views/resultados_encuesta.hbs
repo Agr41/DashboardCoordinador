@@ -146,6 +146,16 @@
     </li>
     {{/each}}
   </div>
+  <div class"col-sm-6 col-lg-6">
+    <h5>Alumnos que faltan de contestar:</h5>
+    {{#each datos}}
+    {{#each this.falta_encuesta}}
+    <li>
+    {{this}}
+    </li>
+    {{/each}}
+    {{/each}}
+  </div>
         </div>
       </div>
      {{> footer}}

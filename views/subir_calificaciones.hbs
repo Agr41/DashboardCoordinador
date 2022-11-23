@@ -53,7 +53,7 @@
             <td><input type="text" class="form-control" name="nombre" placeholder="0" hidden value="{{nombre}}" required>{{nombre}}</td>
             <td><input type="number" class="form-control" name="retardos" placeholder="0" max="80" min="0" value="0" required></td>
             <td><input type="number" class="form-control" name="inasistencias" placeholder="0" max="80" min="0" value="0" required></td>
-            <td><input type="number" class="form-control" name="calificacion" placeholder="10/100" max="100" min="10"  required></td>
+            <td><input type="number" class="form-control" name="calificacion" placeholder="0" max="100" min="10"  required></td>
           </tr>
         {{/each}}
     {{/with}}
@@ -67,7 +67,7 @@
           <br>
           
         </div>
-        <button class="btn btn-primary" type="submit">Guardar cambios</button>
+        <button class="btn btn-success" type="submit">Guardar cambios</button>
       </div>
           </form>
           {{/if}}
