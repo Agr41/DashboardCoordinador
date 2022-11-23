@@ -43,7 +43,7 @@ async function detalleUsu(id){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('usuarios');
-      let arregloMat = await collection.aggregate([{$match:{$and:[{"active":true},{"root":{$ne:true}}]}}]).sort({nombre: 1}).toArray();
+      let arregloMat = await collection.aggregate([{$match:{$and:[{"active":true},{"root":{$ne:true}}, {"maestro":true}]}}]).sort({nombre: 1}).toArray();
       let aluISC = await db.collection('alumnos').aggregate([{$match:{$and:[{"active":true},{"carrera":"ISC"}]}}]).sort({nombre: 1}).toArray();
       let aluIM = await db.collection('alumnos').aggregate([{$match:{$and:[{"active":true},{"carrera":"IM"}]}}]).sort({nombre: 1}).toArray();
       let aluISA = await db.collection('alumnos').aggregate([{$match:{$and:[{"active":true},{"carrera":"ISA"}]}}]).sort({nombre: 1}).toArray();
