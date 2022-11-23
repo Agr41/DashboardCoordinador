@@ -16,8 +16,18 @@ async function detalleUsu(nombre, ciclo, tipo){
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('encuestas');
-      let arregloMat = await db.collection('materias').aggregate([{$match:{nombre:nombre, ciclo:ciclo, tipo:tipo}}]).toArray();
-
+      let arregloMat = await collection.aggregate([{$match:{nombre:nombre, ciclo:ciclo, tipo:tipo}}]).toArray();
+      
+      let comentarios = await collection.aggregate(
+        [
+          {
+            '$match': {
+              'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
+            
+            }
+          }
+        ]
+        ).toArray();
       //-------------------------------------------------------1 Quest-------------
       let conteoPreg1_1 = await collection.aggregate(
         [
@@ -41,6 +51,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor1': {
                 //Qué contestaron
@@ -58,6 +69,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor1': {
                 //Qué contestaron
@@ -75,6 +87,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor1': {
                 //Qué contestaron
@@ -92,6 +105,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor2': {
                 //Qué contestaron
@@ -109,6 +123,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor2': {
                 //Qué contestaron
@@ -126,6 +141,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor2': {
                 //Qué contestaron
@@ -143,6 +159,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor2': {
                 //Qué contestaron
@@ -160,6 +177,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor3': {
                 //Qué contestaron
@@ -177,6 +195,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor3': {
                 //Qué contestaron
@@ -194,6 +213,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor3': {
                 //Qué contestaron
@@ -211,6 +231,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor3': {
                 //Qué contestaron
@@ -228,6 +249,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor4': {
                 //Qué contestaron
@@ -245,6 +267,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor4': {
                 //Qué contestaron
@@ -262,6 +285,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor4': {
                 //Qué contestaron
@@ -279,6 +303,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor4': {
                 //Qué contestaron
@@ -296,6 +321,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor5': {
                 //Qué contestaron
@@ -313,6 +339,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor5': {
                 //Qué contestaron
@@ -330,6 +357,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor5': {
                 //Qué contestaron
@@ -347,6 +375,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor5': {
                 //Qué contestaron
@@ -364,6 +393,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor6': {
                 //Qué contestaron
@@ -381,6 +411,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor6': {
                 //Qué contestaron
@@ -398,6 +429,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor6': {
                 //Qué contestaron
@@ -415,6 +447,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor6': {
                 //Qué contestaron
@@ -432,6 +465,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor7': {
                 //Qué contestaron
@@ -449,6 +483,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor7': {
                 //Qué contestaron
@@ -466,6 +501,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor7': {
                 //Qué contestaron
@@ -483,6 +519,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor7': {
                 //Qué contestaron
@@ -500,6 +537,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor8': {
                 //Qué contestaron
@@ -517,6 +555,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor8': {
                 //Qué contestaron
@@ -534,6 +573,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor8': {
                 //Qué contestaron
@@ -551,6 +591,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor8': {
                 //Qué contestaron
@@ -568,6 +609,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor9': {
                 //Qué contestaron
@@ -585,6 +627,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor9': {
                 //Qué contestaron
@@ -602,6 +645,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor9': {
                 //Qué contestaron
@@ -619,6 +663,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor9': {
                 //Qué contestaron
@@ -636,6 +681,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor10': {
                 //Qué contestaron
@@ -653,6 +699,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor10': {
                 //Qué contestaron
@@ -669,7 +716,8 @@ async function detalleUsu(nombre, ciclo, tipo){
         let conteoPreg10_3 = await collection.aggregate(
           [
             {
-              '$match': {
+              '$match': {'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
+
                 //Pregunta
                 'valor10': {
                 //Qué contestaron
@@ -687,6 +735,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor10': {
                 //Qué contestaron
@@ -704,6 +753,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor11': {
                 //Qué contestaron
@@ -721,6 +771,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor11': {
                 //Qué contestaron
@@ -738,6 +789,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor11': {
                 //Qué contestaron
@@ -755,6 +807,7 @@ async function detalleUsu(nombre, ciclo, tipo){
           [
             {
               '$match': {
+                'materia':nombre, 'ciclo':ciclo, 'tipo':tipo,
                 //Pregunta
                 'valor11': {
                 //Qué contestaron
@@ -834,9 +887,10 @@ async function detalleUsu(nombre, ciclo, tipo){
             "tres":conteoPreg11_3[0],
             "cuatro":conteoPreg11_4[0],
           };
+          
         
       console.log(pregunta1)
-      var dato = {arregloMat, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, pregunta6, pregunta7, pregunta8, pregunta9, pregunta10, pregunta11}
+      var dato = {arregloMat, pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, pregunta6, pregunta7, pregunta8, pregunta9, pregunta10, pregunta11, comentarios}
       
       return dato;
   };
@@ -865,7 +919,8 @@ router.get('/',(req, res, next) => {
             pregunta8:dato.pregunta8,
             pregunta9:dato.pregunta9,
             pregunta10:dato.pregunta10,
-            pregunta11:dato.pregunta11,});
+            pregunta11:dato.pregunta11,
+            comentarios:dato.comentarios});
           })  
           .catch((err)=>{
               console.log(err);
