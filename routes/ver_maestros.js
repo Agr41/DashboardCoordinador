@@ -18,10 +18,10 @@ async function detalleUsu(id){
       const collection = db.collection('usuarios');
       let arregloUsu
       if(id===true){
-      arregloUsu = await collection.aggregate([{$match:{root:{$ne:true}}}]).sort({nombre: 1}).toArray();
+      arregloUsu = await collection.aggregate([{$match:{root:{$ne:true},alumno:{$ne:true}}}]).sort({nombre: 1}).toArray();
       }
       else{
-      arregloUsu = await collection.aggregate([{$match:{coordi:false, active:true, root:{$ne:true}}}]).sort({nombre: 1}).toArray();
+      arregloUsu = await collection.aggregate([{$match:{coordi:false, maestro:true, active:true, root:{$ne:true}}}]).sort({nombre: 1}).toArray();
       }
       let tipoUsu = await collection.aggregate([{$match:{username:id}}]).toArray();
       
