@@ -111,7 +111,8 @@ passport.deserializeUser(
           password: hash,
           nombre:datos.nombre,
           coordi: Boolean(datos.coordi),
-          active:datos.active
+          active:datos.active, 
+          maestro:true
         }}, {upsert:true}
       );
       console.log(datos.usuario); 
