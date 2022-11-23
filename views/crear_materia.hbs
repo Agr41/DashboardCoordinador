@@ -131,11 +131,15 @@ $(document).ready(function () {
             $("#size").html("");
         } else if (val == "ISC") {
             $("#size").html("{{#each aluISC}}<div class='form-check' id='size'><input class='form-check-input' name='nomAlu' type='checkbox' value='{{this.nombre}}' id='flexCheckDefault'> <label class='form-check-label' for='flexCheckDefault'> {{this.nombre}}</label></div>{{/each}}");
+            $("#nombre").html("{{#each planesISC}}{{#each this.materias}}<option value='{{this}}'>{{this}} {{../this.carrera}}</option>{{/each}}{{/each}}");
         } else if (val == "ISA") {
+          $("#nombre").html("{{#each planesISA}}{{#each this.materias}}<option value='{{this}}'>{{this}} {{../this.carrera}}</option>{{/each}}{{/each}}");
             $("#size").html("{{#each aluISA}}<div class='form-check' id='size'><input class='form-check-input' name='nomAlu' type='checkbox' value='{{this.nombre}}' id='flexCheckDefault'> <label class='form-check-label' for='flexCheckDefault'> {{this.nombre}}</label></div>{{/each}}");
         } else if (val == "IIS") {
+          $("#nombre").html("{{#each planesIIS}}{{#each this.materias}}<option value='{{this}}'>{{this}} {{../this.carrera}}</option>{{/each}}{{/each}}");
             $("#size").html("{{#each aluIIS}}<div class='form-check' id='size'><input class='form-check-input' name='nomAlu' type='checkbox' value='{{this.nombre}}' id='flexCheckDefault'> <label class='form-check-label' for='flexCheckDefault'> {{this.nombre}}</label></div>{{/each}}");
         } else if (val == "IM") {
+          $("#nombre").html("{{#each planesIM}}{{#each this.materias}}<option value='{{this}}'>{{this}} {{../this.carrera}}</option>{{/each}}{{/each}}");
             $("#size").html("{{#each aluIM}}<div class='form-check' id='size'><input class='form-check-input' name='nomAlu' type='checkbox' value='{{this.nombre}}' id='flexCheckDefault'> <label class='form-check-label' for='flexCheckDefault'> {{this.nombre}}</label></div>{{/each}}");
         }
       $("select").prop('disabled', false);
