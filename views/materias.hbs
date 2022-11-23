@@ -27,7 +27,7 @@
                   {{else}}
                   <a  {{#if sent}} class="btn btn-secondary disabled" {{else}} class="btn btn-success" href="/subir_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}"{{/if}}>Subir</a>
                   <a {{#if sent}} href="/editar_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success"{{else}} class="btn btn-secondary disabled"{{/if}} >Editar</a>
-                  <a {{#if sent}} href="/resultados_encuesta?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success"{{else}} class="btn btn-secondary disabled"{{/if}} >Encuesta</a>
+                  {{#if needsEncuesta}}<a {{#if sent}} href="/resultados_encuesta?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success"{{else}} class="btn btn-secondary disabled"{{/if}} >Encuesta</a>{{/if}}
                   {{/if}}
                   <a href="/ver_calificaciones?materia={{this.nombre}}&ciclo={{this.ciclo}}&tipo={{this.tipo}}" class="btn btn-success">Ver</a>
                 </div>

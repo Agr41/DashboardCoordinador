@@ -185,6 +185,10 @@ let d2 = new Date(date2);
  } 
  else{
   mensaje = "Registro correcto"
+  let needsEncuesta=false;
+  if(datos.tipo=="Ordinario" || datos.tipo=="Recurso"){
+    needsEncuesta=true;
+  }
   await collection.updateOne({
     carrera: datos.carrera,
       semestre:datos.semestre,
@@ -205,7 +209,8 @@ let d2 = new Date(date2);
       hora_inicio:datos.h_inicio,
       hora_fin:datos.h_final,
       alumnos:valuesArr,
-      falta_encuesta:datos.nomAlu
+      falta_encuesta:datos.nomAlu,
+      needsEncuesta: needsEncuesta
 
     }}, {upsert:true}
     );
