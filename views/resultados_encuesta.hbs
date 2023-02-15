@@ -21,7 +21,7 @@
                 {{#each datos}}
                 <li>Horario: {{hora_inicio}} - {{hora_fin}}</li>
                 <li>Ciclo: {{this.ciclo}}</li>
-                <li>Carrera: {{this.carrera}}</li>
+                <li>Carrera: {{this.carrera}} {{this.semestre}}</li>
                 {{/each}}
               </ul>
             </div>
@@ -155,6 +155,8 @@
     </li>
     {{/each}}
     {{/each}}
+    <br>
+    <button class="form-control" onclick="window.print();return false;">Imprimir</button>
   </div>
         </div>
       </div>

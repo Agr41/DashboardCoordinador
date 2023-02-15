@@ -334,8 +334,12 @@
 <br>
 
                             <div class="form-group position-relative">
+                                {{#if falta}}
                             <button type="submit" class="btn  btn-success col-12 col-form-label"
                             id="sendMessageButton" disabled><strong > Enviar encuesta</strong></button>
+                            {{else}}
+                            USTED YA CONTESTÓ LA ENCUESTA
+                            {{/if}}
                             </div>
 
 </div>

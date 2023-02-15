@@ -13,21 +13,27 @@ passport.deserializeUser(
       done(err, user);});
 });
 
-async function detalleUsu(id, user){
+async function detalleUsu(id, user, nombre, ciclo, tipo){
+  console.log(nombre)
+  console.log(ciclo)
+  console.log(tipo)
   await client.connect();
       const db = client.db(dbName);
       const collection = db.collection('materias');
       let arregloMat=[];
-      if(user.coordi==true){
-        arregloMat = await collection.aggregate([{$match:{$or:[{carrera:id},{docente:id}]}}]).toArray();
-      }
-      else{
-        arregloMat = await collection.aggregate([{$match:{docente:user.nombre,carrera:id}}]).toArray();
-      }
+
+        arregloMat = await collection.aggregate([{$match:{nombre:nombre, ciclo:ciclo, tipo:tipo}}]).toArray();
+      let falta= false
+      arregloMat[0].falta_encuesta.forEach(element => {
+        if (element==user.nombre){
+          falta=true;
+        }
+      });
+      console.log("falta3")
+
       
       
-      
-      var dato = {arregloMat}
+      var dato = {arregloMat, falta}
       console.log(dato)
       return dato;
   };
@@ -51,10 +57,10 @@ router.get('/',(req, res, next) => {
           }
           console.log(query)
 
-          detalleUsu(query, req.user)
+          detalleUsu(query, req.user,req.query.materia, req.query.ciclo, req.query.tipo)
           .then((dato)=>{
             console.log(dato.arregloMat)
-            res.render('encuesta3', { title: "Materias",docente:req.query.docente, coordi:req.user.coordi, materia:req.query.materia, ciclo:req.query.ciclo, tipo:req.query.tipo});
+            res.render('encuesta3', { title: "Evaluación de maestros",docente:req.query.docente, coordi:req.user.coordi, materia:req.query.materia, ciclo:req.query.ciclo, tipo:req.query.tipo, falta:dato.falta});
           })  
           .catch((err)=>{
               console.log(err);
@@ -105,20 +111,6 @@ const schema = Joi.object({
     .required(),
     promedio: Joi.number()
 });
-
-
-async function detalleUsu(id){
-  await client.connect();
-      const db = client.db(dbName);
-      const collection = db.collection('usuarios');
-      let arregloMat = await collection.aggregate([{$match:{$and:[{"active":true},{"root":{$ne:true}}]}}]).sort({nombre: 1}).toArray();
-      
-      
-      
-      var dato = {}
-      console.log(dato)
-      return dato;
-  };
 
 
 
